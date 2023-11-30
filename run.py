@@ -509,7 +509,7 @@ def menu(my_name,my_id):
     prints(Panel(f"{H2}{waktucok()}",padding=(0,22),width=60,style=f"{color_panel}"))
     dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
     dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
-    console.print(Columns(dia))
+    wa.print(Columns(dia))
     prints(Panel(f"""{P2}[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack pencarian nama
 [{color_text}02{P2}]. crack dari id Masal    [{color_text}06{P2}]. Dump ID Publik
 [{color_text}03{P2}]. crack dari Grup        [{color_text}07{P2}]. crack dari File
@@ -1035,7 +1035,7 @@ def passwrd():
     urut = []
     urut.append(panel(f'[bold green]%s [bold white]'%(okc),width=30,title=f"[bold green]OK SAVE",style=f"{color_panel}"))
     urut.append(panel(f'[bold yellow]%s [bold white]'%(cpc),width=30,title=f"[bold yellow]CP SAVE",style=f"{color_panel}"))
-    Console.print(Columns(urut))
+    wa.print(Columns(urut))
     awal = datetime.now()
     Console().print(Panel(f'[bold white]hidup/matikan Mode Pesawat Setiap [bold green]300[bold yellow] ID ',title=f"[bold green]Informasi",width=60,style=f"{color_panel}"))
     prog = Progress(TextColumn('{task.description}'))
