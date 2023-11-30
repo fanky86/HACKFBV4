@@ -114,7 +114,7 @@ for xd in range(10000):
     strvnokiax = f"Mozilla/5.0 (Linux; Android {str(rc(andro))}; Nokia_X Build/{str(rc(build_nokiax))}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{str(rr(100,104))}.0.{str(rr(3900,4900))}.{str(rr(40,150))} Mobile Safari/537.36 NokiaBrowser/7.{str(rr(1,5))}.1.{str(rr(16,37))} {str(rc(aZ))}{str(rr(1,1000))}"
     strvgt = f"Mozilla/5.0 (Linux; Android {str(rc(andro))}; {str(rc(gt))}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{str(rr(100,104))}.0.{str(rr(3900,4900))}.{str(rr(40,150))} Mobile Safari/537.36 {str(rc(aZ))}{str(rr(1,1000))}"
     newww = f"Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-J210F Build/MMB29Q) Source/1 [FBAN/EMA;UNITY_PACKAGE/342;FBBV/107586706;FBAV/172.0.0.8.182;FBDV/SM-J210F;FBLC/id_ID;FBOP/20]"
-    uateddy = random.choice([newww,strvredmi,strvsamsung])
+    uateddy = random.choice([strvredmi,strvsamsung])
     free.append(uateddy)
     
 for xd in range(10000):
@@ -130,7 +130,7 @@ for xd in range(10000):
 	j=random.randrange(1, 4)
 	k='Mobile Safari/535.1'
 	uaku=(f'{a}{b}.{c} {d}{e}{f}{g}.{h}.{i}.{j} {k}')
-	free.append(uaku)
+	ugen.append(uaku)
 
 	aa='Mozilla/5.0 (Linux; Android;'
 	b=random.choice(['6','7','8','9','10','11','12'])
@@ -145,7 +145,7 @@ for xd in range(10000):
 	k=random.randrange(40,150)
 	l='Mobile Safari/537.36 OPR/67.1.2254.64861'
 	uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
-	free.append(uaku2)
+	ugen.append(uaku2)
 	
 	aa='Mozilla/5.0 (Linux; U; Android;'
 	b=random.choice(['6','7','8','9','10','11','12'])
@@ -160,7 +160,7 @@ for xd in range(10000):
 	k=random.randrange(40,150)
 	l='Mobile Safari/537.36 OPR/69.0.2254.65859'
 	uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
-	free.append(uaku2)
+	ugen.append(uaku2)
 for x in range(10):
 	a='Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S'
 	b=random.randrange(100, 9999)
