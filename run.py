@@ -115,7 +115,7 @@ for xd in range(10000):
     strvgt = f"Mozilla/5.0 (Linux; Android {str(rc(andro))}; {str(rc(gt))}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{str(rr(100,104))}.0.{str(rr(3900,4900))}.{str(rr(40,150))} Mobile Safari/537.36 {str(rc(aZ))}{str(rr(1,1000))}"
     newww = f"Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-J210F Build/MMB29Q) Source/1 [FBAN/EMA;UNITY_PACKAGE/342;FBBV/107586706;FBAV/172.0.0.8.182;FBDV/SM-J210F;FBLC/id_ID;FBOP/20]"
     uateddy = random.choice([strvredmi,strvsamsung])
-    ugen.append(uateddy)
+    free.append(uateddy)
 
 for xr in range(10000):
     rr = random.randint
@@ -509,7 +509,7 @@ def menu(my_name,my_id):
     prints(Panel(f"{H2}{waktucok()}",padding=(0,22),width=60,style=f"{color_panel}"))
     dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
     dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
-    wa.print(Columns(dia))
+    console.print(Columns(dia))
     prints(Panel(f"""{P2}[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack pencarian nama
 [{color_text}02{P2}]. crack dari id Masal    [{color_text}06{P2}]. Dump ID Publik
 [{color_text}03{P2}]. crack dari Grup        [{color_text}07{P2}]. crack dari File
