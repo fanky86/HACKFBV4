@@ -356,41 +356,21 @@ def logoku():
 def banner():
     Console().print(Panel("""
 [bold red]███████████████████████    
-[bold red]███████████████████████          [bold yellow]Github    : [bold green]https://github.com/Rudal-XD
-[bold red]███████████████████████          [bold yellow]Wa        : [bold green]+62895386194***
+[bold red]███████████████████████ [bold yellow]Github : [bold green]
+[bold red]███████████████████████ [bold yellow]Wa     : [bold green]+62895386194***
 [bold white]███████████████████████          
 [bold white]███████████████████████          
 [bold white]███████████████████████ 
-[bold white]""",width=80,style=f"{color_panel}"))
+[bold white]""",width=60,style=f"{color_panel}"))
 
 
-
-#----------[LICENSE]------------#
-def license():
-	try :
-		os.system ('clear')
-		logoku()
-		Console().print(Panel(f"""[{color_text}01{P2}] Dapatkan Api key\n[{color_text}02{P2}] Masukan Api Key\n[{color_text}03{P2}] Keluar [bold red][Exit][bold white]""",width=80,style=f"{color_panel}",title="[bold red]>[bold yellow]>[bold green]>[hot_pink2] (License) [bold green]<[bold yellow]<[bold red]<"))
-		masuk = console.input(f" {H2}• {P2}pilih menu : ")
-		if masuk in ['1','01']:
-			beli_bang()
-		elif masuk in ['2','02']:
-			key()
-		elif masuk in ['3','03']:
-			exit ()
-		else :
-			exit (f"[!] Wrong Input")
-	except (KeyError ):
-		exit (f"[!] Api Key Invalid")
-	except Exception as masuk :
-		exit (f"[!] {masuk}")
 		
 #--------------------[ BAGIAN-MASUK ]--------------#
 def login123():
 	os.system('clear')
 	banner()
 	Console().print(Panel("""[bold white][[bold cyan]01[bold white]] Login Menggunakan Cookie (Recomend)\n[[bold cyan]02[bold white]] Keluar
-    """,width=80, style=f"{color_panel}", title="[bold red]>[bold yellow]>[bold green]>[hot_pink2] (LOGIN) [bold green]<[bold yellow]<[bold red]<"))
+    """,width=60, style=f"{color_panel}", title="[bold red]>[bold yellow]>[bold green]>[hot_pink2] (LOGIN) [bold green]<[bold yellow]<[bold red]<"))
 	bryn = console.input(f" {H2}• {P2}pilih menu : ")
 	if bryn in ['1','01']:
 		login_lagi334()
@@ -423,7 +403,7 @@ def login():
 
 def login_lagi334():
 	try:
-		Console().print(Panel("""[bold white]Disarankan Untuk Menggunakan Cookie Yang Masih Fresh Untuk Melakukan Crack Account""",width=80,style=f"{color_panel}", title="SARAN"))
+		Console().print(Panel("""[bold white]Disarankan Untuk Menggunakan Cookie tumbal""",width=60,style=f"{color_panel}", title="SARAN"))
 		your_cookies = console.input(f" {H2}• {P2}Masukan Cookie : ")
 		with requests.Session() as r:
 			try:
@@ -524,19 +504,17 @@ def menu(my_name,my_id):
         time.sleep(3)
         login()
     os.system('clear')
-    banner()
     negara = requests.get("http://ip-api.com/json/").json()["country"]
     ip = requests.get("http://ip-api.com/json/").json()["query"]
-    prints(Panel(f"{U2}{ip}",padding=(0,30),title=f"{P2}Halo, {H2}{my_name} {P2}{waktucok()}",subtitle=f"{P2}{negara}",style=f"{color_panel}"))
-    #dia.append(Panel(f'{P2}lisensi : {H2}{key}-****-****\n{P2}premium : {H2}{prem}',width=38,padding=(0,2),style=f"{color_panel}"))
-    #dia.append(panel(f'{P2}Join    : {H2}{tanggal1} {bulan1} {tahun1}\n{P2}expired : {H2}{tanggal} {bulan} {tahun}',width=38,padding=(0,2),style=f"{color_panel}"))
-    #console.print(Columns(dia))
-    prints(Panel(f"""{P2}
-[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack dari pencarian nama
+    prints(Panel(f"{H2}{waktucok()}",padding=(0,22),width=60,style=f"{color_panel}"))
+    dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
+    dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
+    console.print(Columns(dia))
+    prints(Panel(f"""{P2}[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack pencarian nama
 [{color_text}02{P2}]. crack dari id Masal    [{color_text}06{P2}]. Dump ID Publik
-[{color_text}03{P2}]. crack dari Grup		 [{color_text}07{P2}]. crack dari File
-[{color_text}04{P2}]. crack dari random mail [{color_text}08{P2}]. crack dari opsi CP""",width=80,padding=(0,6),style=f"{color_panel}"))
-    prints(Panel(f"""{P2}ketik {H2}bot{P2} untuk ke menu bot dan ketik {H2}lain{P2} untuk ke menu lain""",width=80,padding=(0,6),style=f"{color_panel}"))
+[{color_text}03{P2}]. crack dari Grup        [{color_text}07{P2}]. crack dari File
+[{color_text}04{P2}]. crack dari random mail [{color_text}08{P2}]. crack dari opsi CP""",width=60,style=f"{color_panel}"))
+    prints(Panel(f"""{P2}ketik {H2}bot{P2} untuk ke menu bot dan ketik {H2}lain{P2} untuk ke menu lain""",width=60,style=f"{color_panel}"))
     HaHi = console.input(f" {H2}• {P2}pilih menu : ")
     if HaHi in ['']:
         console.print(f" {H2}• {P2}[bold red]Masukan Yang Bener Tolol!!! ")
@@ -876,7 +854,7 @@ def publik():
 		token = open('.token.txt','r').read()
 		cok = open('.cok.txt','r').read()	
 		toke = open('.token1.txt','r').read()
-		prints(Panel(f"""{P2}     masukan id target, pastikan id target bersifat publik dan tidak private""",subtitle=f"{P2}ketik {H2}me{P2} untuk dump dari teman sendiri",width=80,style=f"{color_panel}"))
+		prints(Panel(f"""{P2}masukan id target, pastikan id target bersifat publik dan tidak private""",subtitle=f"{P2}ketik {H2}me{P2} untuk dump dari teman sendiri",width=60,style=f"{color_panel}"))
 		a = console.input(f" {H2}• {P2}Masukan Id Target :{U2} ")
 		if a in ['me','Me','ME']:
 			try:
@@ -1008,7 +986,7 @@ def cektahun(fx):
  
 #-------------[ PENGATURAN-IDZ ]---------------#
 def setting():
-    Console().print(Panel(f'{P2}[{color_text}01{P2}] Crack akun Old [/]\n{P2}[{color_text}02{P2}] Crack Akun New [/]\n{P2}[{color_text}03{P2}] Crack Akun Random [[bold green]Recommended[bold white]][/]', title='[bold green] %s '%(len(id)),width=80,style=f"{color_panel}"))
+    Console().print(Panel(f'{P2}[{color_text}01{P2}] Crack akun Old [/]\n{P2}[{color_text}02{P2}] Crack Akun New [/]\n{P2}[{color_text}03{P2}] Crack Akun Random [[bold green]Recommended[bold white]][/]', title='[bold green] %s '%(len(id)),width=60,style=f"{color_panel}"))
     hu = console.input(f" {H2}• {P2}Masukan : ")
     if hu in ['1','01']:
         for tua in sorted(id):
@@ -1029,7 +1007,7 @@ def setting():
     else:
         print(' [+] Pilih Yang Bener Sayang ')
         exit()
-    Console().print(Panel(f'{P2}[{color_text}01{P2}] Login Site [bold green]async.facebook.com[bold white] [/]\n{P2}[{color_text}02{P2}] Login Site [bold green]mobile.facebook.com[bold white]\n{P2}[{color_text}03{P2}] Login Site [bold green]reguler.facebook.com[bold white] [/]',width=80,style=f"{color_panel}", title="[bold green] Method"))
+    Console().print(Panel(f'{P2}[{color_text}01{P2}] Login Site [bold green]async.facebook.com[bold white] [/]\n{P2}[{color_text}02{P2}] Login Site [bold green]mobile.facebook.com[bold white]\n{P2}[{color_text}03{P2}] Login Site [bold green]reguler.facebook.com[bold white] [/]',width=60,style=f"{color_panel}", title="[bold green] Method"))
     hc = console.input(f" {H2}• {P2}Masukan : ")
     if hc in ['1','01']:
         method.append('asyn')
@@ -1039,7 +1017,7 @@ def setting():
         method.append('reguler')
     else:
         method.append('reguler')
-    Console().print(Panel(f'[bold white]Apakah Anda Ingin Mengunakan UA Manual ? Y/T',title=f"[bold green]Setting User-Agent",width=80,style=f"{color_panel}"))
+    Console().print(Panel(f'[bold white]Apakah Anda Ingin Mengunakan UA Manual ? Y/T',title=f"[bold green]Setting User-Agent",width=60,style=f"{color_panel}"))
     uatambah = console.input(f" {H2}• {P2}Masukan : ")
     if uatambah in ['y','Ya','ya','Y']:
         ualuh.append('ya')
@@ -1055,11 +1033,11 @@ def passwrd():
     bi = random.choice([u,k,kk,b,h,hh])
     print('')
     urut = []
-    urut.append(panel(f'[bold green]%s [bold white]'%(okc),width=40,title=f"[bold green]OK SAVE",style=f"{color_panel}"))
-    urut.append(panel(f'[bold yellow]%s [bold white]'%(cpc),width=40,title=f"[bold yellow]CP SAVE",style=f"{color_panel}"))
+    urut.append(panel(f'[bold green]%s [bold white]'%(okc),width=30,title=f"[bold green]OK SAVE",style=f"{color_panel}"))
+    urut.append(panel(f'[bold yellow]%s [bold white]'%(cpc),width=30,title=f"[bold yellow]CP SAVE",style=f"{color_panel}"))
     Console.print(Columns(urut))
     awal = datetime.now()
-    Console().print(Panel(f'\t[bold white]hidup/matikan Mode Pesawat Setiap [bold green]300[bold yellow] ID ',title=f"[bold green]Informasi",width=80,style=f"{color_panel}"))
+    Console().print(Panel(f'[bold white]hidup/matikan Mode Pesawat Setiap [bold green]300[bold yellow] ID ',title=f"[bold green]Informasi",width=60,style=f"{color_panel}"))
     prog = Progress(TextColumn('{task.description}'))
     des = prog.add_task('',total=len(id2))
     with prog:
@@ -1109,9 +1087,9 @@ def passwrd():
                 else:
                     pool.submit(asyn,idf,pwv,"m.facebook.com")
         print('')
-    Console().print(Panel(f'[bold green]Crack Telah Selesai,Jangan lupa Sholat Kawan',subtitle="╭───", subtitle_align="left",title=f"[bold green]Cek Opsi",width=80,style=f"{color_panel}"))
+    Console().print(Panel(f'[bold green]Crack Telah Selesai,Jangan lupa Sholat Kawan',subtitle="╭───", subtitle_align="left",title=f"[bold green]Cek Opsi",width=60,style=f"{color_panel}"))
     Console().print(f"[bold cyan]   ╰[bold green] OK ─> {ok}	[bold yellow]CP ─> {cp}")
-    Console().print(Panel(' [bold green]Lanjut Crack Kembali ?  Y/T  ',width=80,style=f"{color_panel}"))
+    Console().print(Panel(' [bold green]Lanjut Crack Kembali ?  Y/T  ',width=60,style=f"{color_panel}"))
     li = console.input(f" {H2}• {P2}pilih : ")
     if li in ['Y','y']:
         back()
