@@ -113,7 +113,7 @@ for xd in range(10000):
     strvredmi1 = f"Mozilla/5.0 (Linux; Android {str(rc(andro))}; {str(rc(redmi))} Build/{str(rc(lonte))}) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/{str(rr(10,107))}.0.{str(rr(111,6666))}.{str(rr(10,400))} UCBrowser/{str(rr(1,20))}.{str(rr(1,10))}.0.{str(rr(111,5555))} Mobile Safari/537.36 OPR/{str(rr(10,80))}.{str(rr(1,10))}.{str(rr(111,5555))}.{str(rr(111,99999))}"
     strvnokiax = f"Mozilla/5.0 (Linux; Android {str(rc(andro))}; Nokia_X Build/{str(rc(build_nokiax))}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{str(rr(100,104))}.0.{str(rr(3900,4900))}.{str(rr(40,150))} Mobile Safari/537.36 NokiaBrowser/7.{str(rr(1,5))}.1.{str(rr(16,37))} {str(rc(aZ))}{str(rr(1,1000))}"
     strvgt = f"Mozilla/5.0 (Linux; Android {str(rc(andro))}; {str(rc(gt))}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{str(rr(100,104))}.0.{str(rr(3900,4900))}.{str(rr(40,150))} Mobile Safari/537.36 {str(rc(aZ))}{str(rr(1,1000))}"
-    newww = f"SupportsFresco=1 Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-J210F Build/MMB29Q) Source/1 [FBAN/EMA;UNITY_PACKAGE/342;FBBV/107586706;FBAV/172.0.0.8.182;FBDV/SM-J210F;FBLC/id_ID;FBOP/20]"
+    newww = f"Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-J210F Build/MMB29Q) Source/1 [FBAN/EMA;UNITY_PACKAGE/342;FBBV/107586706;FBAV/172.0.0.8.182;FBDV/SM-J210F;FBLC/id_ID;FBOP/20]"
     uateddy = random.choice([newww,strvredmi,strvsamsung])
     free.append(uateddy)
     
@@ -174,7 +174,7 @@ for x in range(10):
 	j=random.randrange(1, 9)
 	k=random.randrange(1, 9)
 	l='Mobile WVGA SMM-MMS/1.2.0 OPN-B'
-	free=f'{a}{b}/{c}{d}{e}{f}{g}{h}{i}{j}.{k} {l}'
+	uak=f'{a}{b}/{c}{d}{e}{f}{g}{h}{i}{j}.{k} {l}'
 	
 for x in range(10):
 	a='Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S'
@@ -189,7 +189,7 @@ for x in range(10):
 	j=random.randrange(1, 9)
 	k=random.randrange(1, 9)
 	l='Mobile WVGA SMM-MMS/1.2.0 OPN-B'
-	free=f'{a}{b}/{c}{d}{e}{f}{g}{h}{i}{j}.{k} {l}'
+	uak=f'{a}{b}/{c}{d}{e}{f}{g}{h}{i}{j}.{k} {l}'
 def uaku():
 	try:
 		ua=open('bbnew.txt','r').read().splitlines()
