@@ -451,12 +451,15 @@ def login():
 def login_lagi334():
         with requests.Session() as xyz:
             try:
-                cookiee = input("[•] Cookie : ")
-                url = 'https://business.facebook.com/business_locations'
-                req = xyz.get(url,cookies=cookiee)
-                tok = re.search('(\["EAAG\w+)', req.text).group(1).replace('["','')
-                open(".token.txt","w").write(tok)
-                open('.cok.txt','w').write(cookiee)
+                cookie = input("[•] Cookie : ")
+                url = 'https://www.facebook.com/adsmanager/manage/campaigns'
+                req = xyz.get(url,cookies=cookie)
+                set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
+                nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
+                roq = xyz.get(nek,cookies=cookie)
+                tok = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
+                open('.token.txt','w').write(tok)
+                open('.cok.txt','w').write(cookie)
                 Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAG [bold green]<"))
                 Console().print(f" {H2}• {P2}[bold green]Login Berhasil,Sedang Menjalankan Ulang[bold white]")
                 back()
