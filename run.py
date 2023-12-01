@@ -463,8 +463,8 @@ def login_lagi334():
                 Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAG [bold green]<"))
                 Console().print(f" {H2}• {P2}[bold green]Login Berhasil,Sedang Menjalankan Ulang[bold white]")
                 back()
-            except Exception as e:
-                print(e)
+            except IOError:
+                exit()
 
 
 
