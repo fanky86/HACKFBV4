@@ -451,7 +451,7 @@ def login():
 def login_lagi334():
         with requests.Session() as xyz:
             try:
-                cookie = input("[•] Cookie : ")
+                cookie = input(f"[•] Cookie : ")
                 url = 'https://www.facebook.com/adsmanager/manage/campaigns'
                 req = xyz.get(url,cookies=cookie)
                 set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
