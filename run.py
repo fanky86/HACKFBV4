@@ -450,8 +450,8 @@ def login():
 
 def login_lagi334():
         with requests.Session() as xyz:
-            cookiee = input("[•] Cookie : ")
             try:
+                cookiee = input("[•] Cookie : ")
                 url = 'https://business.facebook.com/business_locations'
                 req = xyz.get(url,cookies=cookiee)
                 tok = re.search('(\["EAAG\w+)', req.text).group(1).replace('["','')
