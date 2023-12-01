@@ -869,7 +869,7 @@ def publikv2():
 #-------------------[ CRACK-PUBLIK ]----------------#
 def publik():
     with requests.Session() as ses:
-        token = open('.token.txt','r').read()
+        token = open('.token1.txt','r').read()
         cok = open('.cok.txt','r').read()	
         toke = open('.token.txt','r').read()
         prints(Panel(f"""{P2}masukan id target, pastikan id target bersifat publik dan tidak private""",subtitle=f"{P2}ketik {H2}me{P2} untuk dump dari teman sendiri",width=60,style=f"{color_panel}"))
