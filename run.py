@@ -448,7 +448,22 @@ def login():
     except IOError:
         login123()
 
-def login_lagi334():
+def login_lagi334(): # Power Editor Token
+    try:
+        cookie =input("[•] Cookie : ")
+        with requests.Session() as xyz:
+            url = 'https://www.facebook.com/adsmanager/manage/campaigns'
+            req = xyz.get(url,cookies=cookie)
+            set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
+            nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
+            roq = xyz.get(nek,cookies=cookie)
+            tok = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
+            tokenew = open(".token.txt","w").write(tok)
+            cook= open(".cok.txt","w").write(cookie)
+    except Exception as e:
+        return('Cookies Invalid')
+
+def login_lagi33444():
         with requests.Session() as xyz:
             try:
                 coki = input("[•] Cookie : ")
