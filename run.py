@@ -842,7 +842,7 @@ def grup1(urls):
 #------------------[ DUMP-ID ]-----------------#
 def publikv2():
     with requests.Session() as ses:
-        token = open('.token1.txt','r').read()
+        token = open('.token.txt','r').read()
         cok = open('.cok.txt','r').read()
         a = console.input(f" {H2}• {P2}Masukan Id Target :{U2} ")
         filetex = console.input(f" {H2}• {P2}Nama File Dump  :{U2} ")
@@ -869,7 +869,7 @@ def publikv2():
 #-------------------[ CRACK-PUBLIK ]----------------#
 def publik():
     with requests.Session() as ses:
-        token = open('.token1.txt','r').read()
+        token = open('.token.txt','r').read()
         cok = open('.cok.txt','r').read()	
         toke = open('.token.txt','r').read()
         prints(Panel(f"""{P2}masukan id target, pastikan id target bersifat publik dan tidak private""",subtitle=f"{P2}ketik {H2}me{P2} untuk dump dari teman sendiri",width=60,style=f"{color_panel}"))
@@ -891,7 +891,7 @@ def publik():
             try:
                 params = {
             "access_token": token, 
-            "fields": "name,friends.fields(id,name,birthday)"
+            "fields": "name,friends(id,name,birthday)"
             }
                 b = ses.get("https://graph.facebook.com/{}".format(a),params = params,cookies = {'cookie': cok}).json()
                 for c in b["friends"]["data"]:
