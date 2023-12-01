@@ -441,12 +441,12 @@ def login():
             sy3 = json.loads(sy.text)['id']
             menu(sy2,sy3)
         except KeyError:
-            login123()
+            login_lagi334()
         except requests.exceptions.ConnectionError:
             Console().print(f" {H2}• {P2}[bold red]Problem Internet Connection, Check And Try Again")
             exit()
     except IOError:
-        login123()
+        login_lagi334()
 
 def login_lagi334():
         with requests.Session() as xyz:
