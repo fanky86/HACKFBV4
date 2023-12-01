@@ -451,18 +451,15 @@ def login():
 def login_lagi334():
         with requests.Session() as xyz:
             try:
-                cookie = input(f"[•] Cookie : ")
-                open('.cok.txt','w').write(cookie)
+                coki = input(f"[•] Cookie : ")
                 url = 'https://www.facebook.com/adsmanager/manage/campaigns'
-                req = xyz.get(url,cookies=cookie)
+                req = xyz.get(url,cookies=coki)
                 set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
                 nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
-                roq = xyz.get(nek,cookies=cookie)
+                roq = xyz.get(nek,cookies=coki)
                 tok = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
-                open('.token.txt','w').write(tok)
-                Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAG [bold green]<"))
-                Console().print(f" {H2}• {P2}[bold green]Login Berhasil,Sedang Menjalankan Ulang[bold white]")
-                back()
+                tokenew = open(".token.txt","w").write(tok)
+                cook= open(".cok.txt","w").write(coki)
             except IOError:
                 Console().print(f" {H2}• {P2}[bold red] Cookies Kadaluarsa tolkon")
                 os.system('rm -rf .token.txt && rm -rf .cok.txt')
