@@ -154,7 +154,38 @@ for jiah in range(1000):
 	uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
 #	uaku2=f'{aa} {b}; {c}{e}) {g}{h}.{i}.{j}.{k} {l}'
 	ugen.append(uaku2)
-		
+	
+#------------[ UBAH UA DIH SINI OM ]---------------#
+for t in range(10000):
+	a=random.choice(['3','4','5','6','7','8','9','10','11','12'])
+	b=random.choice(['OPM1','TP1A','RP1A','PPR1','PKQ1','QP1A','SP1A','RKQ1'])
+	c=random.randrange(111111,210000)
+	d=random.randrange(11,19)
+	e=random.randrange(73,100)
+	f=random.randrange(4200,4900)
+	g=random.randrange(40,150)
+	random1=random.choice(['SM-M236B','SM-A037G','SM-J701MT','SM-A115U','SM-G610M','SM-J530F','SM-A307FN','SM-A405FN'])
+	random2=random.choice(['SM-J415N','SM-R765T','SM-A730F','SM-A605G','SM-J610F','SM-N9750','SM-G935A'])
+	brayen1=f'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v3523674571 t8858254828754221661 athfa3c3975 altpub cvcv=2 smf=0'
+	brayen2=f'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 RuxitSynthetic/1.0 v3523675023 t8858254828754221661 athfa3c3975 altpub cvcv=2 smf=0'
+	uaku2 = random.choice([brayen1,brayen2])
+	ugen.append(uaku2)
+
+###----------[ USER AGENT ]----------###
+for xd in range(10000):
+    a='Mozilla/5.0 (Linux; Android'
+    b=random.choice(['3.0','4.4.2','4.4.4','5.0.1','8.0','7.0','6.0','5.0','4.0','4.3.4','7.0.1','8.0.1','3','4','5','6','7','8','9','10','11','12','13'])
+    c=random.choice(['SAMSUNG SM-T530','SAMSUNG SM-T805','SAMSUNG-SM-G530AZ','SAMSUNG SM-G925K','SAMSUNG SM-G925L','SAMSUNG SM-G925T','SAMSUNG-SM-T337A','SAMSUNG SM-J110F','SAMSUNG-SM-G890A','SAMSUNG SM-T355Y','SAMSUNG SM-T817T','SAMSUNG SM-G925F','SAMSUNG SM-G928F','SAMSUNG SM-W2021'])
+    d='AppleWebKit/537.36 (KHTML, like Gecko) Chrome/'
+    kk=random.randrange(83,103)
+    buil=random.choice(['Build/JZO54K)','Build/LMY47V)','Build/LMY48B)','Build/LRX22C)','Build/LRX21V) ','Build/LRX22G)','Build/LRX21T)'])
+    e=random.choice(['SamsungBrowser/3.0','SamsungBrowser/3.1','SamsungBrowser/3.2','SamsungBrowser/3.3','SamsungBrowser/3.4','SamsungBrowser/3.5','SamsungBrowser/3.6','SamsungBrowser/3.7','SamsungBrowser/3.8','SamsungBrowser/3.9','SamsungBrowser/4.0','SamsungBrowser/2.0','SamsungBrowser/2.1','SamsungBrowser/2.2','SamsungBrowser/2.3','SamsungBrowser/2.4','SamsungBrowser/2.5','SamsungBrowser/2.6','SamsungBrowser/2.7','SamsungBrowser/2.8','SamsungBrowser/2.9','SamsungBrowser/1.0','SamsungBrowser/1.1','SamsungBrowser/1','SamsungBrowser/5.0','SamsungBrowser/5.1','SamsungBrowser/5.2','SamsungBrowser/5.3','SamsungBrowser/5.4','SamsungBrowser/5.5','SamsungBrowser/5.6','SamsungBrowser/5.7','SamsungBrowser/5.8','SamsungBrowser/5.9','SamsungBrowser/6.0','SamsungBrowser/6.1','SamsungBrowser/19.0','SamsungBrowser/20.0','SamsungBrowser/21.0','SamsungBrowser/18.0','SamsungBrowser/17.0','SamsungBrowser/16.0','SamsungBrowser/15.0'])
+    g=random.randrange(4200,4900)
+    h=random.randrange(40,150)
+    i='Mobile Safari/537.36'
+    uaku=f'{a} {b}; {c} {buil} {d}{kk}.{g}.{h} {e} {i}'
+    ugen.append(uaku)
+
 def uaku():
 	try:
 		ua=open('bbnew.txt','r').read().splitlines()
@@ -426,24 +457,17 @@ def login_lagi334():
 	pil='1'
 	if pil in ['1','01']:
 		try:
-			cik='# LOGIN USING COOKIE'
-			cik2=mark(cik ,style='red')
-			sol().print(cik2)
-			cooki=input("Cookie : ")
-			open('.cookie.txt','w').write(cooki)
-			head = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0'}
-			data = requests.get("https://business.facebook.com/business_locations", headers =head, cookies = {"cookie":cooki}) 
-			find_token = re.search("(EAAG\w+)", data.text)
-			ken=open(".token.txt", "w").write(find_token.group(1))
-			cokrom=open('.cok.txt','r').read()
-			tokrom=open('.token.txt','r').read()
-			tes = requests.get('https://graph.facebook.com/me?fields=id,name&access_token='+tokrom,cookies={'cookie': cokrom})
-			tes3 = json.loads(tes.text)['id']
-			cik='# LOGIN SUCCESSFUL, JALANKAN ULANG '
-			cik2=mark(cik ,style='green')
-			sol().print(cik2)
-			login()
-		except Exception as e: 
+			cookie =input("[•] Cookie : ")
+			with requests.Session() as xyz:
+				url = 'https://business.facebook.com/business_locations'
+				req = xyz.get(url,cookies=cookie)
+				tok2 = re.search('(\["EAAG\w+)', req.text).group(1).replace('["','')
+				open(".token2.txt","w").write(tok2)
+				Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok2}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAG [bold green]<"))
+				Console().print(f" {H2}• {P2}[bold green]Login Berhasil,Sedang Menjalankan Ulang[bold white]")
+				back()
+		except Exception as e:
+			return('Cookies Invalid') 
 			os.system("rm -f .token.txt")
 			os.system("rm -rf .cok.txt")
 			cik='# EXPIRED COOKIE OR CHECKPOINT ACCOUNT '
