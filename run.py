@@ -458,11 +458,11 @@ def login_lagi334(): # Power Editor Token
             nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
             roq = xyz.get(nek,cookies=cookie)
             tok = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
-            tokenew = open(".token.txt","w").write(tok)
-            cook= open(".cok.txt","w").write(cookie)
+            open(".token.txt","w").write(tok)
+            open(".cok.txt","w").write(cookie)
     except Exception as e:
-        return('Cookies Invalid')
-
+        os.system('rm -rf .token.txt && rm -rf .cok.txt')
+        
 def login_lagi33444():
         with requests.Session() as xyz:
             try:
