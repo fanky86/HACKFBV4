@@ -878,7 +878,7 @@ def publik():
             try:
                 params ={
                     "access_token": toke,
-                    "fields":"name,friends,fields(id,name,birthday)"
+                    "fields":"name,friends.fields(id,name,birthday)"
                 }
                 koH = requests.get("https://graph.facebook.com/{}".format(a),params=params,cookies={'cookie': cok}).json()
                 for pi in koH['friends']['data']:
@@ -891,7 +891,7 @@ def publik():
             try:
                 params = {
             "access_token": token, 
-            "fields": "name,friends(id,name,birthday)"
+            "fields": "name,friends.fields(id,name,birthday)"
             }
                 b = ses.get("https://graph.facebook.com/{}".format(a),params = params,cookies = {'cookie': cok}).json()
                 for c in b["friends"]["data"]:
