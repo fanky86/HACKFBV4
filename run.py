@@ -471,7 +471,7 @@ def login_lagi334():
 #----------------[ BAGIAN-MENU ]----------------#
 def menu(my_name,my_id):
     try:
-        tokenx = open('.token1.txt','r').read()
+        tokenx = open('.token.txt','r').read()
         tokenmu.append(tokenx)
         token = open('.token.txt','r').read()
         cookie = open('.cok.txt','r').read()
