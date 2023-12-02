@@ -782,7 +782,7 @@ def publik():
         uid.append(Masukan)
     for user in uid:
         try:
-            graph = ses.get('https://graph.facebook.com/v17.0/'+user+'?fields=friends.limit(999999999)&access_token='+tokenmu[0], cookies = {'cookies':cok}).json()
+            graph = ses.get('https://graph.facebook.com/v17.0/'+user+'?fields=friends.limit(999999999)&access_token=%s'%(token), cookies = {'cookies':cok}).json()
             for xr in graph['friends']['data']:
                 try:
                     gmail = (xr['id']+'|'+xr['name'])
