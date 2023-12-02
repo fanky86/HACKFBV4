@@ -395,10 +395,10 @@ def login_lagi334():
 		with requests.Session() as r:
 			try:
 				r.headers.update({'content-type': 'application/x-www-form-urlencoded',})
-				data = {'access_token': '1532650627471403|ETa-_mYK_Mncx9uZSQ0U0___f-k','scope': ''}
+				data = {'access_token': '1532650627471403|91c3397c81174303bba821e4c1d58ba5','scope': ''}
 				response = json.loads(r.post('https://graph.facebook.com/v2.6/device/login/', data = data).text)
 				code, user_code = response['code'], response['user_code']
-				verification_url, status_url = ('https://m.facebook.com/device?user_code={}'.format(user_code)), ('https://graph.facebook.com/v2.6/device/login_status?method=post&code={}&access_token=1532650627471403|ETa-_mYK_Mncx9uZSQ0U0___f-k&callback=LeetsharesCallback'.format(code))
+				verification_url, status_url = ('https://m.facebook.com/device?user_code={}'.format(user_code)), ('https://graph.facebook.com/v2.6/device/login_status?method=post&code={}&access_token=1532650627471403|91c3397c81174303bba821e4c1d58ba5&callback=LeetsharesCallback'.format(code))
 				r.headers.pop('content-type')
 				r.headers.update({'sec-fetch-mode': 'navigate','user-agent': 'Mozilla/5.0 (Linux; Android 9; RMX1941 Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/107.0.5304.54 Mobile Safari/537.36','sec-fetch-site': 'cross-site','Host': 'm.facebook.com','accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9','sec-fetch-dest': 'document',})
 				response2 = r.get(verification_url, cookies = {'cookie': your_cookies}).text
