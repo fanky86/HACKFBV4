@@ -761,6 +761,7 @@ def publik():
     try:
         token = open('.token.txt','r').read()
         cok = open('.cok.txt','r').read()
+        tokenmu.append(token)
     except IOError:
         console.print(f' {H2}• {P2}cookie kadaluarsa bang ')
         exit()           
@@ -768,7 +769,7 @@ def publik():
     Masukan = console.input(f" {H2}• {P2}Masukan Id Target :{U2} ")
     for user in Masukan:
         try:
-            pp = ses.get('https://graph.facebook.com/v17.0/'+user+'?fields=friends.limit(999999999)&access_token=%s'%(token), cookies = {'cookies':cok}).json()
+            pp = ses.get('https://graph.facebook.com/v18.0/'+user+'?fields=friends.limit(999999999)&access_token='+tokenmu[0], cookies = {'cookies':cok}).json()
             for cc in pp['friends']['data']:
                 id.append(cc['id']+'|'+cc['name'])
             setting()
