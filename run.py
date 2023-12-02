@@ -757,7 +757,7 @@ def publikv2():
 
 
 #----------[ CRACK-PUBLIK  ]----------#            
-def crack_publik():
+def publik():
     try:
         token = open('.token.txt','r').read()
         cok = open('.cok.txt','r').read()
@@ -806,7 +806,7 @@ def crack_publik():
         exit(f"{kun}└──[{mer} Tidak punya teman ")
 	      
 #-------------------[ CRACK-PUBLIK ]----------------#
-def publik():
+def publikcv():
     with requests.Session() as ses:
         token = open('.token.txt','r').read()
         cok = open('.cok.txt','r').read()	
