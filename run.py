@@ -765,11 +765,10 @@ def publik():
 	try:
 		params = {
 			"access_token": t, 
-			"fields": "name,friends.fields(id,name,username)"
+			"fields": "name,friends.fields(id,name)"
 		}
 		bas = ses.get("https://graph.facebook.com/{}".format(akun),params=params,cookies=c).json()
 		for pi in bas['friends']['data']:
-			id.append(pi['username']+'|'+pi['name'])
 			id.append(pi['id']+'|'+pi['name'])
 		setting()
 	except (KeyError,IOError):
