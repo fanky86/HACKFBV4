@@ -764,7 +764,7 @@ def publik():
 	ses=requests.Session()
 	try:
 		params = {
-			"access_token": token, 
+			"access_token": t, 
 			"fields": "name,friends.fields(id,name,username)"
 		}
 		bas = ses.get("https://graph.facebook.com/{}".format(akun),params=params,cookies=c).json()
