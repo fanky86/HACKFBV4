@@ -763,7 +763,11 @@ def publik():
 	akun = input(f'╠───[{hh}!{P}] PASTIKAN ID TARGET BERSIFAT PUBLIK \n╠───[{hh}!{P}] MASUKKAN ID : ')
 	ses=requests.Session()
 	try:
-		bas = ses.get(f'https://graph.facebook.com/%s?fields=friends.fields(id,name,username)&access_token=%s'%(akun,t),cookies=c).json()
+		params = {
+			"access_token": token, 
+			"fields": "name,friends.fields(id,name,username)"
+		}
+		bas = ses.get(f'https://graph.facebook.com/{}'.format(akun),params=params,cookies=c).json()
 		for pi in bas['friends']['data']:
 			try:
 				try:dump.append(pi['username']+'|'+pi['name'])
