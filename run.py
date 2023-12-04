@@ -767,7 +767,7 @@ def publik():
 			"access_token": token, 
 			"fields": "name,friends.fields(id,name,username)"
 		}
-		bas = ses.get(f'https://graph.facebook.com/{}'.format(akun),params=params,cookies=c).json()
+		bas = ses.get(f"https://graph.facebook.com/{}".format(akun),params=params,cookies=c).json()
 		for pi in bas['friends']['data']:
 			try:
 				try:dump.append(pi['username']+'|'+pi['name'])
