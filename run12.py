@@ -389,8 +389,6 @@ def login():
 
 def login_lagi334():
 	try:
-		os.system('clear')
-		banner()
 		cok = input('[+] masukan cookie : ')
 		cos = {'cookie':cok}; data = {'access_token': '1747221832419152|jbFfXxmbkC7NVv6Sy6E8ntvrg40', 'scope': ''}; req  = ses.post('https://graph.facebook.com/v16.0/device/login/',data=data).json(); cd   = req['code']; ucd  = req['user_code']; url  = 'https://graph.facebook.com/v16.0/device/login_status?method=post&code=%s&access_token=1747221832419152|jbFfXxmbkC7NVv6Sy6E8ntvrg40'%(cd); req  = sop(ses.get('https://mbasic.facebook.com/device',cookies=cos).content,'html.parser'); raq  = req.find('form',{'method':'post'}); dat  = {'jazoest' : re.search('name="jazoest" type="hidden" value="(.*?)"',str(raq)).group(1), 'fb_dtsg' : re.search('name="fb_dtsg" type="hidden" value="(.*?)"',str(req)).group(1), 'qr' : '0', 'user_code' : ucd}; rel  = 'https://mbasic.facebook.com' + raq['action']; pos  = sop(ses.post(rel,data=dat,cookies=cos).content,'html.parser')
 		dat  = {}
@@ -404,8 +402,8 @@ def login_lagi334():
 			except Exception as e:
 				pass
 		rel = 'https://mbasic.facebook.com' + raq['action']; pos = sop(ses.post(rel,data=dat,cookies=cos).content,'html.parser'); req = ses.get(url,cookies=cos).json(); tok = req['access_token']; kot = open('.token.txt','w').write(tok); koc = open('.cok.txt','w').write(cok); masuk = input('\n[+] tekan enter'); os.system('clear'); login()
-	except Exception as e:
-		print(e)
+	except Exception:
+		print()
 
 def followdong():
 	try:
