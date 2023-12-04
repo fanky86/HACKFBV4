@@ -769,13 +769,8 @@ def publik():
 		}
 		bas = ses.get("https://graph.facebook.com/{}".format(akun),params=params,cookies=c).json()
 		for pi in bas['friends']['data']:
-			try:
-				try:dump.append(pi['username']+'|'+pi['name'])
-				except:dump.append(pi['id']+'|'+pi['name'])
-				print('\r╠───[{hh}!{P}] SEDANG DUMP %s ID'%(len(dump)),end=" ")
-				sys.stdout.flush()
-				time.sleep(0.0002)
-			except:continue
+			id.append(pi['username']+'|'+pi['name'])
+			id.append(pi['id']+'|'+pi['name'])
 		setting()
 	except (KeyError,IOError):
 		exit(f"╠───[{hh}!{P}] AKUN TIDAK PUBLIK")	
