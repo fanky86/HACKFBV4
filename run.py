@@ -796,7 +796,7 @@ def GetUser():
     except:
         pass
 
-def publik():
+def publikkln():
     with requests.Session() as ses:
         token = open('.token.txt','r').read()
         cok = open('.cok.txt','r').read()	
