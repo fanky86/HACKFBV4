@@ -416,10 +416,8 @@ def menu(my_name,my_id):
     if HaHi in ['']:
         console.print(f" {H2}• {P2}[bold red]Masukan Yang Bener Tolol!!! ")
     elif HaHi in ['1','01']:
-        prints(Panel(f"""{K2}masukan id target, pastikan id target bersifat publik dan tidak private""",subtitle=f"{B2}ketik {H2}me{K2} untuk dump dari teman sendiri",width=80,style=f"{color_panel}"))
+        prints(Panel(f"""{K2}masukan id target, pastikan id target bersifat publik dan tidak private""",subtitle=f"{B2}ketik {H2}me{K2} untuk dump dari teman sendiri",width=60,style=f"{color_panel}"))
         user = console.input(f" {H2}• {B2}masukan id atau username : ")
-        if user in["Me","me"]:
-            user = GetUser()
         publik(f"https://m.facebook.com/{user}?v=friends")
         setting()
     elif HaHi in ['2','02']:
@@ -773,8 +771,10 @@ def publiikk():
 #-------------------[ CRACK-PUBLIK ]----------------#
 def publik(url):
     try:
+        user = console.input(f" {H2}• {B2}masukan id atau username : ")
+        uri = f"https://m.facebook.com/{user}?v=friends"
         cok = open('.cok.txt','r').read()
-        url = parser(ses.get(url,cookies=cok).text,"html.parser")
+        url = parser(ses.get(uri,cookies=cok).text,"html.parser")
         for z in url.find_all("a",href=True):
             if "fref" in z.get("href"):
                 if "/profile.php?id=" in z.get("href"):uid = "".join(bs4.re.findall("profile\.php\?id=(.*?)&",z.get("href")));nama = z.text
