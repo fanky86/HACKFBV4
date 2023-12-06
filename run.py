@@ -416,10 +416,7 @@ def menu(my_name,my_id):
     if HaHi in ['']:
         console.print(f" {H2}• {P2}[bold red]Masukan Yang Bener Tolol!!! ")
     elif HaHi in ['1','01']:
-        prints(Panel(f"""{K2}masukan id target, pastikan id target bersifat publik dan tidak private""",subtitle=f"{B2}ketik {H2}me{K2} untuk dump dari teman sendiri",width=60,style=f"{color_panel}"))
-        user = console.input(f" {H2}• {B2}masukan id atau username : ")
-        publik(f"https://m.facebook.com/{user}?v=friends")
-        setting()
+        publik()
     elif HaHi in ['2','02']:
         massal()
     elif HaHi in ['3','03']:
@@ -769,7 +766,7 @@ def publiikk():
             print(e)
 	      
 #-------------------[ CRACK-PUBLIK ]----------------#
-def publik(url):
+def publik():
     try:
         user = console.input(f" {H2}• {B2}masukan id atau username : ")
         uri = f"https://m.facebook.com/{user}?v=friends"
@@ -782,6 +779,7 @@ def publik(url):
                 if uid+"<=>"+nama in id:pass
                 else:id.append(uid+"<=>"+nama)
                 console.print(f" {H2}• {K2}sedang proses mengumpulkan id, berhasil mendapatkan {len(id)} id....", end="\r")
+        setting()
         for x in url.find_all("a",href=True):
             if "Lihat Teman Lain" in x.text:
                 publik("https://mbasic.facebook.com/"+x.get("href"))
