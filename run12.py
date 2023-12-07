@@ -204,8 +204,8 @@ def menu():
 		cookie = {"cookie": cok}
 		nama = cek_login()
 	except:
-		try:os.remove("data/cookie")
-		except:pass
+		prints(Panel(f"""{M2}ᴄᴏᴏᴋɪᴇᴍᴜ ᴍᴏᴅᴀʀ anjing""",width=60,style=f"{color_panel}"))
+		os.remove("data/cookie")
 		login_cookie()
 	prints(Panel(f"{M2}{ip}",padding=(0,30),title=f"{K2}{nama}",subtitle=f"{B2}{negara}",style=f"{color_panel}"))
 	prints(Panel(f"""{K2}[{color_text}01{K2}]. ᴄʀᴀᴄᴋ ɪᴅ ꜰᴇᴄᴇʙᴏᴏᴋ   [{color_text}05{K2}].𝘾𝙧𝙖𝙘𝙠 𝙪𝙨𝙚𝙧𝙣𝙖𝙢𝙚 𝙁𝙖𝙘𝙚𝙗𝙤𝙤𝙠
