@@ -180,35 +180,33 @@ class Login:
 					post = ses.post("https://mbasic.facebook.com"+x["action"],data=data,cookies={"cookie": cookie})
 		except:
 			pass
-		
+	def cek_login(self,cookie):
+		try:
+			url = ses.get("https://mbasic.facebook.com/profile.php",cookies=cookie).text
+			nama = re.findall("<title>(.*?)</title>",url)[0]
+			if "Konten Tidak Ditemukan" in nama:
+				try:os.remove("data/cookie")
+				except:pass
+				Login().menu_login()
+			else:
+				return nama
+		except ConnectionError:
+			prints(Panel(f"""{M2}ᴋᴏɴᴇᴋꜱɪ ᴊᴇʟᴇᴋ,ʜᴀʀᴀᴘ ᴅᴜᴅᴜᴋ ᴅɪ ᴀᴛᴀꜱ ᴛᴏᴡᴇʀ""",width=80,style=f"{color_panel}"))
+			exit()
+
+
 ###----------[ BAGIAN MENU ]---------- ###
 men = []
 id = []
 ses=requests.Session()
 ip = ses.get("http://ip-api.com/json/").json()["query"]
 negara = ses.get("http://ip-api.com/json/").json()["country"]
-def cek_login():
-	try:
-		ses=requests.Session()
-		cookie = open("data/cookie","r").read()
-		url = ses.get("https://mbasic.facebook.com/profile.php",cookies=cookie).text
-		nama = re.findall("<title>(.*?)</title>",url)[0]
-		if "Konten Tidak Ditemukan" in nama:
-			try:os.remove("data/cookie")
-			except:pass
-			Login().login_cookie()
-		else:
-			return nama
-	except ConnectionError:
-		prints(Panel(f"""{M2}ᴋᴏɴᴇᴋꜱɪ ᴊᴇʟᴇᴋ,ʜᴀʀᴀᴘ ᴅᴜᴅᴜᴋ ᴅɪ ᴀᴛᴀꜱ ᴛᴏᴡᴇʀ""",width=80,style=f"{color_panel}"))
-		exit()
-			
 ###----------[ MENU UTAMA ]---------- ###
 def menu():
 	try:
 		cok = open("data/cookie","r").read()
 		cookie = {"cookie": cok}
-		nama = cek_login()
+		nama = Login().cek_login()
 	except IOError:
 		Console().print(f" {H2}• {P2}[bold red] Cookies Kadaluarsa tolkon")
 		os.system('rm -rf data/cookie')
