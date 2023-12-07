@@ -17,7 +17,7 @@ from time import sleep as jeda
 from rich.columns import Columns
 from rich.progress import Progress,SpinnerColumn,BarColumn,TextColumn,TimeElapsedColumn
 console = Console()
-
+ses=requests.Session()
 ###----------[ WARNA PRINT RICH ]---------- ###
 M2 = "[#FF0000]" # MERAH
 H2 = "[#00FF00]" # HIJAU
@@ -121,6 +121,7 @@ def logonya():
 def menu_login():
 	clear()
 	logonya()
+	ses=requests.Session()
 	ip = ses.get("http://ip-api.com/json/").json()["query"]
 	negara = ses.get("http://ip-api.com/json/").json()["country"]
 	prints(Panel(f"{P2}{ip}",padding=(0,30),subtitle=f"{H2}{negara}",style=f"{color_panel}"))
@@ -134,6 +135,7 @@ def menu_login():
 
 def login_cookie():
 	try:
+		ses=requests.Session()
 		prints(Panel(f"""{P2}ꜱɪʟᴀʜᴋᴀɴ ᴍᴀꜱᴜᴋᴀɴ ᴄᴏᴏᴋɪᴇᴍᴜ ʙᴀɴɢ""",width=80,style=f"{color_panel}"))
 		cookie = console.input(f" {H2}• {P2}ᴄᴏᴏᴋɪᴇᴍᴜ : ")
 		url = ses.get("https://mbasic.facebook.com/",cookies={"cookie": cookie}).text
@@ -161,6 +163,7 @@ def login_cookie():
 ###----------[ UBAH BAHASA ]---------- ###
 def ubah_bahasa():
 	try:
+		ses=requests.Session()
 		cookie = open("data/cookie","r").read()
 		url = ses.get("https://mbasic.facebook.com/language/",cookies={"cookie": cookie})
 		parsing = parser(url.text,"html.parser")
@@ -178,10 +181,12 @@ def ubah_bahasa():
 ###----------[ BAGIAN MENU ]---------- ###
 men = []
 id = []
+ses=requests.Session()
 ip = ses.get("http://ip-api.com/json/").json()["query"]
 negara = ses.get("http://ip-api.com/json/").json()["country"]
 def cek_login():
 	try:
+		ses=requests.Session()
 		cookie = open("data/cookie","r").read()
 		url = ses.get("https://mbasic.facebook.com/profile.php",cookies=cookie).text
 		nama = re.findall("<title>(.*?)</title>",url)[0]
@@ -273,6 +278,7 @@ def menu():
 
 def GetUser():
 	try:
+		ses=requests.Session()
 		cookie = open("data/cookie","r").read()
 		url = ses.get("https://mbasic.facebook.com/profile.php",cookies=cookie).text
 		uid = re.findall('name="target" value="(.*?)"',url)[0]
@@ -282,6 +288,7 @@ def GetUser():
 	
 def Dump_Publik(url):
 	try:
+		ses=requests.Session()
 		cookie = open("data/cookie","r").read()
 		url = parser(ses.get(url,cookies=cookie).text,"html.parser")
 		for z in url.find_all("a",href=True):
@@ -299,6 +306,7 @@ def Dump_Publik(url):
 ###----------[ DUMP KOMENTAR ]---------- ###
 def Dump_Komentar(url):
 	try:
+		ses=requests.Session()
 		data = parser(ses.get(url).text,"html.parser")
 		for isi in data.find_all("h3"):
 			for ids in isi.find_all("a",href=True):
