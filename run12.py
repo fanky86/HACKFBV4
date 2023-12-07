@@ -118,65 +118,68 @@ def logonya():
 	
 
 ###----------[ BAGIAN LOGIN ]---------- ###
-def menu_login():
-	clear()
-	logonya()
-	ses=requests.Session()
-	ip = ses.get("http://ip-api.com/json/").json()["query"]
-	negara = ses.get("http://ip-api.com/json/").json()["country"]
-	prints(Panel(f"{P2}{ip}",padding=(0,30),subtitle=f"{H2}{negara}",style=f"{color_panel}"))
-	prints(Panel(f"""{P2}[{color_text}01{P2}]. ʟᴏɢɪɴ ᴄᴏᴏᴋɪᴇ """,width=80,padding=(0,15),style=f"{color_panel}"))
-	login = console.input(f" {H2}• {P2}ᴘɪʟɪʜ ᴍᴇɴᴜ : ")
-	if login in["1","01"]:
-		login_cookie()
-	else:
-		exit(prints(Panel(f"""{M2} ᴍᴀᴀꜰ ʙᴇʟᴜᴍ ᴅɪ ᴜᴘᴅᴀᴛᴇ ʙʀᴇ""",width=80,style=f"{color_panel}")))
-			
+class Login:
+	
+	###----------[ FUNCTION INIT ]---------- ###
+	def __init__(self):
+		self.ip = ses.get("http://ip-api.com/json/").json()["query"]
+		self.negara = ses.get("http://ip-api.com/json/").json()["country"]
 
-def login_cookie():
-	try:
-		ses=requests.Session()
-		prints(Panel(f"""{P2}ꜱɪʟᴀʜᴋᴀɴ ᴍᴀꜱᴜᴋᴀɴ ᴄᴏᴏᴋɪᴇᴍᴜ ʙᴀɴɢ""",width=80,style=f"{color_panel}"))
-		cookie = console.input(f" {H2}• {P2}ᴄᴏᴏᴋɪᴇᴍᴜ : ")
-		url = ses.get("https://mbasic.facebook.com/",cookies={"cookie": cookie}).text
-		if "Apa yang Anda pikirkan sekarang" in url:
-			pass
+	###----------[ MENU LOGIN ]---------- ###
+	def menu_login(self):
+		logonya()
+		prints(Panel(f"{P2}{self.ip}",padding=(0,30),subtitle=f"{H2}{self.negara}",style=f"{color_panel}"))
+		prints(Panel(f"""{P2}[{color_text}01{P2}]. ʟᴏɢɪɴ ᴄᴏᴏᴋɪᴇ
+[{color_text}02{P2}]. ʟᴏɢɪɴ {M2}ᴇᴍᴀɪʟ ᴀɴᴅ ᴘᴀꜱꜱᴡᴏʀᴅ""",width=80,padding=(0,15),style=f"{color_panel}"))
+		login = console.input(f" {H2}• {P2}ᴘɪʟɪʜ ᴍᴇɴᴜ : ")
+		if login in["1","01"]:
+			prints(Panel(f"""{P2}ꜱɪʟᴀʜᴋᴀɴ ᴍᴀꜱᴜᴋᴀɴ ᴄᴏᴏᴋɪᴇᴍᴜ ʙᴀɴɢ""",width=80,style=f"{color_panel}"))
+			cookie = console.input(f" {H2}• {P2}ᴄᴏᴏᴋɪᴇᴍᴜ : ")
+			#open("data/cookie","w").write(cookie)
+			self.login_cookie(cookie)
 		else:
-			for z in url.find_all("a",href=True):
-				if "Tidak, Terima Kasih" in z.text:
-					get = ses.get("https://mbasic.facebook.com"+z["href"],cookies={"cookie": cookie})
-					parsing = parser(get.text,"html.parser")
-					action = parsing.find("form",{"method":"post"})["action"]
-					data = {
-						"fb_dtsg":re.search('name="fb_dtsg" value="(.*?)"', str(get.text)).group(1),
-						"jazoest":re.search('name="jazoest" value="(.*?)"', str(get.text)).group(1),
-						"submit": "OK, Gunakan Data"
+			exit(prints(Panel(f"""{M2} ᴍᴀᴀꜰ ʙᴇʟᴜᴍ ᴅɪ ᴜᴘᴅᴀᴛᴇ ʙʀᴇ""",width=80,style=f"{color_panel}")))
+			
+	###----------[ LOGIN COOKIE ]---------- ###
+	def login_cookie(self,cookie):
+		try:
+			url = ses.get("https://mbasic.facebook.com/",cookies={"cookie": cookie}).text
+			if "Apa yang Anda pikirkan sekarang" in url:
+				pass
+			else:
+				for z in url.find_all("a",href=True):
+					if "Tidak, Terima Kasih" in z.text:
+						get = ses.get("https://mbasic.facebook.com"+z["href"],cookies={"cookie": cookie})
+						parsing = parser(get.text,"html.parser")
+						action = parsing.find("form",{"method":"post"})["action"]
+						data = {
+							"fb_dtsg":re.search('name="fb_dtsg" value="(.*?)"', str(get.text)).group(1),
+							"jazoest":re.search('name="jazoest" value="(.*?)"', str(get.text)).group(1),
+							"submit": "OK, Gunakan Data"
 						}
-					post = ses.post("https://mbasic.facebook.com"+action,data=data,cookies={"cookie": cookie})
-					break
-		open("data/cookie","w").write(cookie)
-		menu()
-	except:
+						post = ses.post("https://mbasic.facebook.com"+action,data=data,cookies={"cookie": cookie})
+						break
+			open("data/cookie","w").write(cookie)
+			menu()
+		except:
 			prints(Panel(f"""{M2}ᴄᴏᴏᴋɪᴇᴍᴜ ᴍᴏᴅᴀʀ ɢᴏʙʟᴏᴋ""",width=60,style=f"{color_panel}"))
-			exit()
+			sys.exit()
 		
-###----------[ UBAH BAHASA ]---------- ###
-def ubah_bahasa():
-	try:
-		ses=requests.Session()
-		cookie = open("data/cookie","r").read()
-		url = ses.get("https://mbasic.facebook.com/language/",cookies={"cookie": cookie})
-		parsing = parser(url.text,"html.parser")
-		for x in parsing.find_all("form",{"method":"post"}):
-			if "Bahasa Indonesia" in str(x):
-				data = {
-					"fb_dtsg" : re.search('name="fb_dtsg" value="(.*?)"',str(url.text)).group(1),
-					"jazoest" : re.search('name="jazoest" value="(.*?)"', str(url.text)).group(1),
-					"submit"  : "Bahasa Indonesia"
+	###----------[ UBAH BAHASA ]---------- ###
+	def ubah_bahasa(self,cookie):
+		try:
+			url = ses.get("https://mbasic.facebook.com/language/",cookies={"cookie": cookie})
+			parsing = parser(url.text,"html.parser")
+			for x in parsing.find_all("form",{"method":"post"}):
+				if "Bahasa Indonesia" in str(x):
+					data = {
+						"fb_dtsg" : re.search('name="fb_dtsg" value="(.*?)"',str(url.text)).group(1),
+						"jazoest" : re.search('name="jazoest" value="(.*?)"', str(url.text)).group(1),
+						"submit"  : "Bahasa Indonesia"
 					}
-				post = ses.post("https://mbasic.facebook.com"+x["action"],data=data,cookies={"cookie": cookie})
-	except:
-		pass
+					post = ses.post("https://mbasic.facebook.com"+x["action"],data=data,cookies={"cookie": cookie})
+		except:
+			pass
 		
 ###----------[ BAGIAN MENU ]---------- ###
 men = []
@@ -193,7 +196,7 @@ def cek_login():
 		if "Konten Tidak Ditemukan" in nama:
 			try:os.remove("data/cookie")
 			except:pass
-			login_cookie()
+			Login().login_cookie()
 		else:
 			return nama
 	except ConnectionError:
@@ -210,7 +213,7 @@ def menu():
 		Console().print(f" {H2}• {P2}[bold red] Cookies Kadaluarsa tolkon")
 		os.system('rm -rf data/cookie')
 		time.sleep(3)
-		login_cookie()
+		Login().login_cookie()
 	clear()
 	logonya()
 	prints(Panel(f"{M2}{ip}",padding=(0,30),title=f"{K2}{nama}",subtitle=f"{B2}{negara}",style=f"{color_panel}"))
