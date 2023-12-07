@@ -206,12 +206,11 @@ def menu():
 	try:
 		cok = open("data/cookie","r").read()
 		cookie = {"cookie": cok}
-		nama = Login().cek_login()
-	except IOError:
-		Console().print(f" {H2}• {P2}[bold red] Cookies Kadaluarsa tolkon")
-		os.system('rm -rf data/cookie')
-		time.sleep(3)
-		Login().login_cookie()
+		nama = Login().cek_login(cookie)
+	except:
+		try:os.remove("data/cookie")
+		except:pass
+		Login().menu_login()
 	clear()
 	logonya()
 	prints(Panel(f"{M2}{ip}",padding=(0,30),title=f"{K2}{nama}",subtitle=f"{B2}{negara}",style=f"{color_panel}"))
