@@ -119,6 +119,7 @@ def logonya():
 
 ###----------[ BAGIAN LOGIN ]---------- ###
 def menu_login():
+	clear()
 	logonya()
 	ip = ses.get("http://ip-api.com/json/").json()["query"]
 	negara = ses.get("http://ip-api.com/json/").json()["country"]
