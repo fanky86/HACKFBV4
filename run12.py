@@ -197,16 +197,17 @@ def cek_login():
 			
 ###----------[ MENU UTAMA ]---------- ###
 def menu():
-	clear()
-	logonya()
 	try:
 		cok = open("data/cookie","r").read()
 		cookie = {"cookie": cok}
 		nama = cek_login()
-	except:
-		prints(Panel(f"""{M2}ᴄᴏᴏᴋɪᴇᴍᴜ ᴍᴏᴅᴀʀ anjing""",width=60,style=f"{color_panel}"))
-		os.remove("data/cookie")
+	except IOError:
+		Console().print(f" {H2}• {P2}[bold red] Cookies Kadaluarsa tolkon")
+		os.system('rm -rf data/cookie')
+		time.sleep(3)
 		login_cookie()
+	clear()
+	logonya()
 	prints(Panel(f"{M2}{ip}",padding=(0,30),title=f"{K2}{nama}",subtitle=f"{B2}{negara}",style=f"{color_panel}"))
 	prints(Panel(f"""{K2}[{color_text}01{K2}]. ᴄʀᴀᴄᴋ ɪᴅ ꜰᴇᴄᴇʙᴏᴏᴋ   [{color_text}05{K2}].𝘾𝙧𝙖𝙘𝙠 𝙪𝙨𝙚𝙧𝙣𝙖𝙢𝙚 𝙁𝙖𝙘𝙚𝙗𝙤𝙤𝙠
 [{color_text}02{K2}].𝐂𝐫𝐚𝐜𝐤 𝐏𝐞𝐧𝐠𝐢𝐤𝐮𝐭 𝐟𝐛    [{color_text}06{K2}].𝐂𝐫𝐚𝐜𝐤 𝐧𝐚𝐦𝐚 𝐟𝐛
