@@ -124,8 +124,7 @@ def menu_login():
 	ip = ses.get("http://ip-api.com/json/").json()["query"]
 	negara = ses.get("http://ip-api.com/json/").json()["country"]
 	prints(Panel(f"{P2}{ip}",padding=(0,30),subtitle=f"{H2}{negara}",style=f"{color_panel}"))
-	prints(Panel(f"""{P2}[{color_text}01{P2}]. ʟᴏɢɪɴ ᴄᴏᴏᴋɪᴇ
-			  [{color_text}02{P2}]. ʟᴏɢɪɴ {M2}ᴇᴍᴀɪʟ ᴀɴᴅ ᴘᴀꜱꜱᴡᴏʀᴅ""",width=80,padding=(0,15),style=f"{color_panel}"))
+	prints(Panel(f"""{P2}[{color_text}01{P2}]. ʟᴏɢɪɴ ᴄᴏᴏᴋɪᴇ """,width=80,padding=(0,15),style=f"{color_panel}"))
 	login = console.input(f" {H2}• {P2}ᴘɪʟɪʜ ᴍᴇɴᴜ : ")
 	if login in["1","01"]:
 		login_cookie()
@@ -198,6 +197,7 @@ def cek_login():
 			
 ###----------[ MENU UTAMA ]---------- ###
 def menu():
+	clear()
 	logonya()
 	try:
 		cok = open("data/cookie","r").read()
