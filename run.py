@@ -457,8 +457,9 @@ def publik():
             if 'paging' in str(req):
                 after = req['paging']['cursors']['after']
                 dta.update({'after': after})
-                publik()
+                return id
         except:pass
+        return id
     print('')
     setting()
 
