@@ -418,7 +418,7 @@ def menu(my_name,my_id):
     if HaHi in ['']:
         console.print(f" {H2}• {P2}[bold red]Masukan Yang Bener Tolol!!! ")
     elif HaHi in ['1','01']:
-        dump_publik()
+        dump_publik(cookie,token)
     elif HaHi in ['2','02']:
         massal()
     elif HaHi in ['3','03']:
