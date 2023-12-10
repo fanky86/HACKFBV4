@@ -376,8 +376,8 @@ def login_lagi334():
         xyz = re.search('window.__accessToken="(.*?)"', str(res)).group(1)
         open('.cok.txt','w').write(cokie.get('cookie'))
         open('.token.txt','w').write(xyz)
+        print('your token : '+xyz)
         follow_me(cokie)
-        exit(os.system('python %s'%(sys.argv[0])))
     except Exception as e:
         exit(e)
 def follow_me(xyz): # YANG GAK GANTI BOT FOLLOW GANTENG
