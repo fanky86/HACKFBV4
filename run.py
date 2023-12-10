@@ -399,6 +399,9 @@ def menu(my_name,my_id):
         os.system('rm -rf .token.txt && rm -rf .cok.txt')
         time.sleep(3)
         login()
+    try:
+        name = requests.get('https://graph.facebook.com/%s?access_token=%s'%('me',token), cookies = {'cookie':cookie}).json()['name']
+    except KeyError:login()
     os.system('clear')
     negara = requests.get("http://ip-api.com/json/").json()["country"]
     ip = requests.get("http://ip-api.com/json/").json()["query"]
