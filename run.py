@@ -459,7 +459,6 @@ def publik():
                 dta.update({'after': after})
                 publik()
         except:pass
-        return id
     print('')
     setting()
 
