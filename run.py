@@ -446,23 +446,24 @@ def publik():
     tk = open('.token.txt','r').read()
     ck = open('.cok.txt','r').read()
     dta = {'access_token':tk,'after':None}
-    url = 'https://graph.facebook.com/v18.0/%s/friends'
     uid = input('\n%s[%s!%s] Gunakan Tanda Koma Buat Pemisahan Id\n[%s?%s] Masukan Id : %s'%(N,M,N,M,N,H))
     for xxx in uid.split(','):
         try:
-            req = requests.get(url%(uid), params=dta, cookies={'cookie':ck}).json()
+            req = requests.get('https://graph.facebook.com/v18.0/%s/friends'%(xxx), params=dta, cookies={'cookie':ck}).json()
             for xyz in req['data']:
                 uid = '%s|%s'%(xyz['id'],xyz['name'])
-                if uid not in id:
-                    id.append(uid)
+                if uid not in id:id.append(uid)
                 print('%s[%s!%s] Success Medapatkan %s Id '%(N,M,N,len(id)),end='\r')
                 sys.stdout.flush()
             if 'paging' in str(req):
                 after = req['paging']['cursors']['after']
                 uid.update({'after': after})
         except:pass
+        return id
     print('')
     setting()
+
+
 #-----------------[ CRACK EMAIL ]-----------------#
 def crack_email():
     rc = random.choice
