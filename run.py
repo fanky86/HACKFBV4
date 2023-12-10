@@ -441,7 +441,6 @@ def menu(my_name,my_id):
 
 
 
-dump = []
 def publik():
     tk = open('.token.txt','r').read()
     ck = open('.cok.txt','r').read()
@@ -457,7 +456,7 @@ def publik():
                 sys.stdout.flush()
             if 'paging' in str(req):
                 after = req['paging']['cursors']['after']
-                uid.update({'after': after})
+                dta.update({'after': after})
         except:pass
         return id
     print('')
