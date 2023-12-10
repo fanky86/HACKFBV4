@@ -449,25 +449,20 @@ def publik():
     url = 'https://graph.facebook.com/v18.0/%s/friends'
     uid = input('\n%s[%s!%s] Gunakan Tanda Koma Buat Pemisahan Id\n[%s?%s] Masukan Id : %s'%(N,M,N,M,N,H))
     for xxx in uid.split(','):
-        exec_dump(dta, url, xxx, dump, ck)
+        try:
+            req = requests.get(url%(uid), params=dta, cookies={'cookie':ck}).json()
+            for xyz in req['data']:
+                uid = '%s|%s'%(xyz['id'],xyz['name'])
+                if uid not in id:
+                    id.append(uid)
+                print('%s[%s!%s] Success Medapatkan %s Id '%(N,M,N,len(id)),end='\r')
+                sys.stdout.flush()
+            if 'paging' in str(req):
+                after = req['paging']['cursors']['after']
+                uid.update({'after': after})
+        except:pass
     print('')
     setting()
-
-def exec_dump(params, host, user, array, coki):
-    try:
-        req = requests.get(host%(user), params=params, cookies={'cookie':coki}).json()
-        for xyz in req['data']:
-            uid = '%s|%s'%(xyz['id'],xyz['name'])
-            if uid not in array:array.append(uid)
-            print('%s[%s!%s] Success Medapatkan %s Id '%(N,M,N,len(array)),end='\r')
-            sys.stdout.flush()
-        if 'paging' in str(req):
-           after = req['paging']['cursors']['after']
-           params.update({'after': after})
-           exec_dump(params, host, user, array, coki)
-    except:pass
-    return array
-
 #-----------------[ CRACK EMAIL ]-----------------#
 def crack_email():
     rc = random.choice
