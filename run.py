@@ -458,7 +458,6 @@ def publik():
                 after = req['paging']['cursors']['after']
                 dta.update({'after': after})
         except:pass
-        return id
     print('')
     setting()
 
