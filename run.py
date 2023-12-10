@@ -768,66 +768,6 @@ def publikv2():
         except Exception as e:
             print(e)
 
-
-#----------[ CRACK-PUBLIK  ]----------#   
-def publiikk():
-    try:
-        token = open('.token.txt','r').read()
-        cok = open('.cok.txt','r').read()
-        tokenmu.append(token)
-    except IOError:
-        console.print(f' {H2}• {P2}cookie kadaluarsa bang ')
-        exit()           
-    ses=requests.Session()
-    Masukan = console.input(f" {H2}• {P2}Masukan Id Target :{U2} ")
-    for user in Masukan:
-        try:
-            pp = ses.get('https://graph.facebook.com/v18.0/'+user+'?fields=friends.limit(999999999)&access_token='+tokenmu[0], cookies = {'cookies':cok}).json()
-            for cc in pp['friends']['data']:
-                id.append(cc['id']+'|'+cc['name'])
-            setting()
-        except Exception as e:
-            print(e)
-	      
-#-------------------[ CRACK-PUBLIK ]----------------#
-def publikkk(url):
-    try:
-        cok = open('.cok.txt','r').read()
-        url = parser(ses.get(url,cookies=cok).text,"html.parser")
-        for z in url.find_all("a",href=True):
-            if "fref" in z.get("href"):
-                if "/profile.php?id=" in z.get("href"):uid = "".join(bs4.re.findall("profile\.php\?id=(.*?)&",z.get("href")));nama = z.text
-                else:uid = "".join(bs4.re.findall("/(.*?)\?",z.get("href")));nama = z.text
-                if uid+"<=>"+nama in id:pass
-                else:id.append(uid+"<=>"+nama)
-                console.print(f" {H2}• {K2}sedang proses mengumpulkan id, berhasil mendapatkan {len(id)} id....", end="\r")
-        for x in url.find_all("a",href=True):
-            if "Lihat Teman Lain" in x.text:
-                publik("https://mbasic.facebook.com/"+x.get("href"))
-    except:pass
-
-def GetUser():
-    try:
-        cok = open('.cok.txt','r').read()
-        url = ses.get("https://mbasic.facebook.com/profile.php",cookies=cok).text
-        uid = re.findall('name="target" value="(.*?)"',url)[0]
-        return uid
-    except:
-        pass
-
-def publikkln():
-    with requests.Session() as ses:
-        token = open('.token.txt','r').read()
-        cok = open('.cok.txt','r').read()	
-        prints(Panel(f"""{P2}masukan id target, pastikan id target bersifat publik dan tidak private""",width=60,style=f"{color_panel}"))
-        a = console.input(f" {H2}• {P2}Masukan Id Target :{U2} ")
-        try:
-            b = ses.get('https://graph.facebook.com/v17.0/'+a+'?fields=friends.limit(999999999)&access_token={}'.format(token), cookies = {'cookies':cok}).json()
-            for c in b["friends"]["data"]:
-                id.append(c["id"]+"|"+c["name"])
-            setting()
-        except Exception as e:
-            print(e)
 #-------------------[ CRACK-Masal ]----------------#
 def massal():
     try:
