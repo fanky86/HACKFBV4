@@ -449,7 +449,7 @@ def dump_publik(ck,tk, dump = []):
     for xxx in uid.split(','):
         exec_dump(dta, url, xxx, dump, ck)
     print('')
-    setting()
+    setting(dump)
 
 def exec_dump(params, host, user, array, coki):
     try:
@@ -873,7 +873,7 @@ def cektahun(fx):
     return tahunz
  
 #-------------[ PENGATURAN-IDZ ]---------------#
-def setting():
+def setting(dump):
     Console().print(Panel(f'{P2}[{color_text}01{P2}] Crack akun Old [/]\n{P2}[{color_text}02{P2}] Crack Akun New [/]\n{P2}[{color_text}03{P2}] Crack Akun Random [[bold green]Recommended[bold white]][/]', title='[bold green] %s '%(len(id)),width=60,style=f"{color_panel}"))
     hu = console.input(f" {H2}• {P2}Masukan : ")
     if hu in ['1','01']:
