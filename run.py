@@ -415,7 +415,7 @@ def menu(my_name,my_id):
     if HaHi in ['']:
         console.print(f" {H2}• {P2}[bold red]Masukan Yang Bener Tolol!!! ")
     elif HaHi in ['1','01']:
-        publik(token,cookie)
+        publik()
     elif HaHi in ['2','02']:
         massal()
     elif HaHi in ['3','03']:
@@ -439,8 +439,10 @@ def menu(my_name,my_id):
     else:
         console.print(f" {H2}• {P2}[bold red]Masukan Yang Bener Tolol!!! ")
 
-
-def publik(ck,tk, dump = []):
+dump=[]
+def publik():
+    tk = open('.token.txt','r').read()
+    ck = open('.cok.txt','r').read()
     dta = {'access_token':tk,'after':None}
     url = 'https://graph.facebook.com/v18.0/%s/friends'
     uid = input('\n%s[%s!%s] Gunakan Tanda Koma Buat Pemisahan Id\n[%s?%s] Masukan Id : %s'%(N,M,N,M,N,H))
