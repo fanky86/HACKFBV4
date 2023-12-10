@@ -439,7 +439,7 @@ def menu(my_name,my_id):
     else:
         console.print(f" {H2}• {P2}[bold red]Masukan Yang Bener Tolol!!! ")
 
-
+dump = []
 def publik():
     tk = open('.token.txt','r').read()
     ck = open('.cok.txt','r').read()
@@ -447,7 +447,7 @@ def publik():
     url = 'https://graph.facebook.com/v18.0/%s/friends'
     uid = input('\n%s[%s!%s] Gunakan Tanda Koma Buat Pemisahan Id\n[%s?%s] Masukan Id : %s'%(N,M,N,M,N,H))
     for xxx in uid.split(','):
-        pubdump(dta, url, xxx, id, ck)
+        pubdump(dta, url, xxx, dump, ck)
     print('')
     setting()
 
@@ -465,30 +465,6 @@ def pubdump(params, host, user, id, coki):
            pubdump(params, host, user, id, coki)
     except:pass
     return id
-
-
-def publikkli():
-    tk = open('.token.txt','r').read()
-    ck = open('.cok.txt','r').read()
-    dta = {'access_token':tk,'after':None}
-    uid = input('\n%s[%s!%s] Gunakan Tanda Koma Buat Pemisahan Id\n[%s?%s] Masukan Id : %s'%(N,M,N,M,N,H))
-    for xxx in uid.split(','):
-        try:
-            req = requests.get('https://graph.facebook.com/v18.0/%s/friends'%(xxx), params=dta, cookies={'cookie':ck}).json()
-            for xyz in req['data']:
-                uid = '%s|%s'%(xyz['id'],xyz['name'])
-                if uid not in id:id.append(uid)
-                print('%s[%s!%s] Success Medapatkan %s Id '%(N,M,N,len(id)),end='\r')
-                sys.stdout.flush()
-            if 'paging' in str(req):
-                after = req['paging']['cursors']['after']
-                dta.update({'after': after})
-                return id
-        except:pass
-        return id
-    print('')
-    setting()
-
 
 #-----------------[ CRACK EMAIL ]-----------------#
 def crack_email():
