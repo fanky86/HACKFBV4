@@ -445,7 +445,8 @@ def dump_publik():
     ck = open('.cok.txt','r').read()
     dta = {'access_token':tk,'after':None}
     url = 'https://graph.facebook.com/v18.0/%s/friends'
-    uid = input('\n%s[%s!%s] Gunakan Tanda Koma Buat Pemisahan Id\n[%s?%s] Masukan Id : %s'%(N,M,N,M,N,H))
+    prints(Panel(f"""{K2}masukan id target, pastikan id target bersifat publik dan tidak private""",width=60,style=f"{color_panel}"))
+    uid = console.input(f" {H2}• {B2}masukan id atau username : ")
     for xxx in uid.split(','):
         exec_dump(dta, url, xxx, id, ck)
     print('')
