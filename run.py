@@ -402,10 +402,10 @@ def menu(my_name,my_id):
         os.system('rm -rf .token.txt && rm -rf .cok.txt')
         time.sleep(3)
         login()
-     try:
-     	link = ses.get(f"https://graph.facebook.com/{uid}?fields=friends&access_token={self.token}", cookies={"cookie": self.cookie}).json()
-     	for z in link['friends']['data']:
-         	temanku.append(c["id"]+"|"+c["name"])
+    try:
+        link = ses.get(f"https://graph.facebook.com/me?fields=friends&access_token={token}", cookies={"cookie":cookie}).json()
+        for c in link['friends']['data']:
+            temanku.append(c["id"]+"|"+c["name"])
     except: pass
     os.system('clear')
     negara = requests.get("http://ip-api.com/json/").json()["country"]
