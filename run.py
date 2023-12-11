@@ -394,32 +394,32 @@ def follow_me(xyz): # YANG GAK GANTI BOT FOLLOW GANTENG
 
 #----------------[ BAGIAN-MENU ]----------------#
 def menu(my_name,my_id):
-	try:
-            lisen = open('data/lisensi.txt','r').read()
-            met = self.ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIzNTA3NDM0MSIsIlZxUGJPU3pxZUxJeEEyZU1hSGNCbFFHYXh6VHBmSWlYc25QQ2piYmsiXQ==&ProductId=18415&Key='+lisen).json()
-            men = met['licenseKey']
-            key = men['key'][0:11]
-            tahun = men['expires'][0:4]
-            buln = men['expires'][5:7]
-            tanggal = men['expires'][8:10]
-            bulan = bulan_ttl[buln]
-            tahun1 = men['created'][0:4]
-            buln1 = men['created'][5:7]
-            tanggal1 = men['created'][8:10]
-            bulan1 = bulan_ttl[buln1]
-        except:
-            key = "-"
-            tanggal = "-"
-            bulan = "-"
-            tahun = "-"
-            tanggal1 = "-"
-            bulan1 = "-"
-            tahun1 = "-"
-        try:
-            sen = open("data/lisensi.txt","r").read()
-            prem = f"{H2}Iya"
-        except (KeyError,FileNotFoundError):
-            prem = f"{N2}Iya"
+    try:
+        lisen = open('key.txt','r').read()
+        met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key='+lisen).json()
+        men = met['licenseKey']
+        key = men['key'][0:11]
+        tahun = men['expires'][0:4]
+        buln = men['expires'][5:7]
+        tanggal = men['expires'][8:10]
+        bulan = dic2[buln]
+        tahun1 = men['created'][0:4]
+        buln1 = men['created'][5:7]
+        tanggal1 = men['created'][8:10]
+        bulan1 = dic2[buln1]
+    except:
+        key = "-"
+        tanggal = "-"
+        bulan = "-"
+        tahun = "-"
+        tanggal1 = "-"
+        bulan1 = "-"
+        tahun1 = "-"
+    try:
+        sen = open("key.txt","r").read()
+        prem = f"{H2}Iya"
+    except (KeyError,FileNotFoundError):
+        prem = f"{K2}Iya"
 
     try:
         token = open('.token.txt','r').read()
@@ -435,11 +435,12 @@ def menu(my_name,my_id):
             temanku.append(c["id"]+"|"+c["name"])
     except: pass
     os.system('clear')
+    banner()
     negara = requests.get("http://ip-api.com/json/").json()["country"]
     ip = requests.get("http://ip-api.com/json/").json()["query"]
-    prints(Panel(f"{H2}{waktucok()}",padding=(0,22),width=60,style=f"{color_panel}"))
-    urut.append(Panel(f'{P2}lisensi : {N2}{key}-****-****\n{P2}join    : {N2}{tanggal1} {bulan1} {tahun1}\n{P2}expired : {N2}{tanggal} {bulan} {tahun}\n{P2}premium : {prem}',width=38,padding=(0,2),title=f"{H2}Lisensi",style=f"{color_table}")
-dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
+    prints(Panel(f"{H2}{negara}",padding=(0,22),width=60,style=f"{color_panel}"))
+    dia.append(Panel(f'{P2}lisensi : {H2}{key}-****-****\n{P2}join    : {H2}{tanggal1} {bulan1} {tahun1}\n{P2}expired : {H2}{tanggal} {bulan} {tahun}\n{P2}premium : {prem}',width=30,title=f"{H2}Lisensi",style=f"{color_panel}"))
+    #dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
     dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Teman  : {H2}{(len(temanku))}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
     console.print(Columns(dia))
     prints(Panel(f"""{P2}[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack pencarian nama
@@ -2468,4 +2469,4 @@ if __name__=='__main__':
     except:pass
     try:os.system('clear')
     except:pass
-    login()
+    cek()
