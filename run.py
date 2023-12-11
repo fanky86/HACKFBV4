@@ -275,10 +275,8 @@ def cek_lisensi_aktif():
  
  
 def maintenance():
-    os.system('clear')
     print()
-    print()
-    Console().print('[bold green] MOHON MAAF UNTUK SEKARANG SCRIPT DALAM TAHAP PERBAIKAN',width=80,style="bold cyan")
+    Console().print('[bold green] MOHON MAAF UNTUK SEKARANG SCRIPT DALAM TAHAP PERBAIKAN',width=60,style="bold cyan")
     print()
 #------------------[ MACHINE-SUPPORT ]---------------#
 def clear():
@@ -295,7 +293,7 @@ def logoku():
 def banner():
     Console().print(Panel("""
 [bold red]███████████████████████    
-[bold red]███████████████████████ [bold yellow]Github : [bold green]
+[bold red]███████████████████████ [bold yellow]Github : [bold green]Rudal-XD
 [bold red]███████████████████████ [bold yellow]Wa     : [bold green]+62895386194***
 [bold white]███████████████████████          
 [bold white]███████████████████████          
@@ -325,8 +323,8 @@ def licen():
 def login123():
     os.system('clear')
     banner()
-    Console().print(Panel("""[bold white][[bold cyan]01[bold white]] Login Menggunakan Cookie (Recomend)\n[[bold cyan]02[bold white]] Keluar
-    """,width=60, style=f"{color_panel}", title="[bold red]>[bold yellow]>[bold green]>[hot_pink2] (LOGIN) [bold green]<[bold yellow]<[bold red]<"))
+    Console().print(Panel("""{P2}[{color_text}01{P2}].Login Menggunakan Cookie\n[{color_text}02{M2}].Keluar
+    """,width=60, style=f"{color_panel}", title="[bold green]Login"))
     bryn = console.input(f" {H2}• {P2}pilih menu : ")
     if bryn in ['1','01']:
         login_lagi334()
@@ -356,20 +354,20 @@ def login():
         login123()
 
 def login_lagi334():
-	cookie = input(f'\n[{O}?{N}] Cookies : ')
-	try:
-		ses.headers.update({"Accept-Language": "id,en;q=0.9","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36","Referer": "https://www.instagram.com/","Host": "www.facebook.com","Sec-Fetch-Mode": "cors","Accept": "*/*","Connection": "keep-alive","Sec-Fetch-Site": "cross-site","Sec-Fetch-Dest": "empty","Origin": "https://www.instagram.com","Accept-Encoding": "gzip, deflate"})
-		link = ses.get("https://www.facebook.com/x/oauth/status?client_id=124024574287414&wants_cookie_data=true&origin=1&input_token=&sdk=joey&redirect_uri=https://www.instagram.com/brutalid_/", cookies={"cookie": cookie})
-		if '"access_token":' in str(link.headers):
-			token = re.search('"access_token":"(.*?)"', str(link.headers)).group(1)
-			open('.cok.txt','w').write(cookie);open('.token.txt','w').write(token)
-			print('')
-			print('your token : '+token)
-			follow_me(cookie)
-			exit(f'\n[{H}+{N}] Login menggunakan cookie berhasil')
-		else:exit()
-	except Exception as e:
-		exit(f'\n[{M}!{N}] Login menggunakan cookie gagal!')
+    cookie = console.input(f" {H2}• {P2}cookie : ")
+    try:
+        ses.headers.update({"Accept-Language": "id,en;q=0.9","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36","Referer": "https://www.instagram.com/","Host": "www.facebook.com","Sec-Fetch-Mode": "cors","Accept": "*/*","Connection": "keep-alive","Sec-Fetch-Site": "cross-site","Sec-Fetch-Dest": "empty","Origin": "https://www.instagram.com","Accept-Encoding": "gzip, deflate"})
+        link = ses.get("https://www.facebook.com/x/oauth/status?client_id=124024574287414&wants_cookie_data=true&origin=1&input_token=&sdk=joey&redirect_uri=https://www.instagram.com/brutalid_/", cookies={"cookie": cookie})
+        if '"access_token":' in str(link.headers):
+            token = re.search('"access_token":"(.*?)"', str(link.headers)).group(1)
+            open('.cok.txt','w').write(cookie);open('.token.txt','w').write(token)
+            Console().print(Panel(f""" [bold green]{token}""",width=60, style=f"{color_panel}", title="[bold green]TOKEN"))
+            follow_me(cookie)
+            Console().print(f" {H2}• {P2}[bold green]Login Berhasil,Sedang Menjalankan Ulang[bold white]")
+            back()
+        else:exit()
+    except Exception as e:
+        Console().print(f" {H2}• {P2}Cookies Invalid")
 	
 def follow_me(xyz): # YANG GAK GANTI BOT FOLLOW GANTENG
     from bs4 import BeautifulSoup as BSP
@@ -426,10 +424,10 @@ def menu(my_name,my_id):
     banner()
     negara = requests.get("http://ip-api.com/json/").json()["country"]
     ip = requests.get("http://ip-api.com/json/").json()["query"]
-    prints(Panel(f"{H2}{negara}",padding=(0,22),width=60,style=f"{color_panel}"))
-    dia.append(Panel(f'{P2}lisensi : {H2}{key}-****-****\n{P2}join    : {H2}{tanggal1} {bulan1} {tahun1}\n{P2}expired : {H2}{tanggal} {bulan} {tahun}\n{P2}premium : {prem}',width=30,title=f"{H2}Lisensi",style=f"{color_panel}"))
+    prints(Panel(f"{P2}{negara}",padding=(0,22),width=60,style=f"{color_panel}"))
+    dia.append(Panel(f'{P2}lisensi : {H2}{key}-****-****\n{P2}join    : {H2}{tanggal1} {bulan1} {tahun1}\n{P2}expired : {H2}{tanggal} {bulan} {tahun}\n{P2}premium : {prem}',width=30,title=f"{P2}Lisensi",style=f"{color_panel}"))
     #dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
-    dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Teman  : {H2}{(len(temanku))}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
+    dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Teman  : {H2}{(len(temanku))}\n{P2}Waktu  : {H2}{waktucok()}',title=f"{P2}Bio Data",width=30,style=f"{color_panel}"))
     console.print(Columns(dia))
     prints(Panel(f"""{P2}[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack pencarian nama
 [{color_text}02{P2}]. crack dari id Masal    [{color_text}06{P2}]. Dump ID Publik
@@ -444,7 +442,7 @@ def menu(my_name,my_id):
     elif HaHi in ['2','02']:
         massal()
     elif HaHi in ['3','03']:
-        grup()
+        maintenance()
     elif HaHi in ['4','04']:
         crack_email()
     elif HaHi in ['5','05']:
