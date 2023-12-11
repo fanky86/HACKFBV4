@@ -226,7 +226,7 @@ def cek():
     try:
         x=open("key.txt","r").read()
     except FileNotFoundError:
-        key()
+        licen()
     try:
         x = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s"%(x)).json()['licenseKey']['key']
         login()
@@ -234,7 +234,7 @@ def cek():
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
         os.system("rm -rf key.txt")
         
-        key()
+        licen()
 
 ###----------[ MASUK LISENSI ]---------- ###
 def key():
@@ -257,7 +257,7 @@ def cek():
     try:
         x=open("key.txt","r").read()
     except FileNotFoundError:
-        key()
+        licen()
     try:
         x = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s"%(x)).json()['licenseKey']['key']
         login()
@@ -265,7 +265,7 @@ def cek():
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
         os.system("rm -rf key.txt")
         time.sleep(3)
-        key()
+        licen()
 
 ###----------[ BUY LISENSI ]---------- ###	
 def beli_bang():
@@ -300,7 +300,7 @@ def cek_lisensi_aktif():
     try:
         xz = open("key.txt","r").read()
     except FileNotFoundError:
-        key()
+        licen()
         os.system("clear")
         cek()
  
@@ -333,8 +333,25 @@ def banner():
 [bold white]███████████████████████ 
 [bold white]""",width=60,style=f"{color_panel}"))
 
-
-        
+#--------------------[ LICENSE ]--------------#
+def licen():
+    try :
+        os.system ('clear')
+        logoku()
+        Console().print(Panel(f"""[{color_text}01{P2}] Dapatkan Api key\n[{color_text}02{P2}] Masukan Api Key\n[{color_text}03{P2}] Keluar [bold red][Exit][bold white]""",width=80,style=f"{color_panel}",title="[bold red]>[bold yellow]>[bold green]>[hot_pink2] (License) [bold green]<[bold yellow]<[bold red]<"))
+        masuk = console.input(f" {H2}• {P2}pilih menu : ")
+        if masuk in ['1','01']:
+            beli_bang()
+        elif masuk in ['2','02']:
+            key()
+        elif masuk in ['3','03']:
+            exit ()
+        else :
+            exit (f"[!] Wrong Input")
+    except (KeyError ):
+        exit (f"[!] Api Key Invalid")
+    except Exception as masuk :
+        exit (f"[!] {masuk}")
 #--------------------[ BAGIAN-MASUK ]--------------#
 def login123():
     os.system('clear')
