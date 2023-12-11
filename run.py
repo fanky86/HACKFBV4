@@ -1615,6 +1615,8 @@ class Lain:
         menu = console.input(f" {H2}• {P2}pilih menu : ")
         if menu in["01","1"]:
             self.cek_hasil()
+        elif menu in["03","3"]:
+            print('prem')
         elif menu in["04","4"]:
             self.ganti_tema()
         elif menu in["05","5"]:
