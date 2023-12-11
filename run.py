@@ -364,7 +364,6 @@ def login_lagi334():
             Console().print(f" {H2}• {P2}[bold green]Login Berhasil,jalankan Ulang Script")
 	else:continue 
     except Exception as e:
-	    
         Console().print(f" {H2}• {P2}Cookies Invalid")
 	
 def follow_me(xyz): # YANG GAK GANTI BOT FOLLOW GANTENG
