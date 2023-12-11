@@ -360,7 +360,6 @@ def login_lagi334():
         if '"access_token":' in str(link.headers):
             token = re.search('"access_token":"(.*?)"', str(link.headers)).group(1)
             open('.cok.txt','w').write(cookie);open('.token.txt','w').write(token)
-            Console().print(Panel(f""" [bold green]{token}""",width=60, style=f"{color_panel}", title="[bold green]TOKEN"))
             follow_me(cookie)
             Console().print(f" {H2}• {P2}[bold green]Login Berhasil,jalankan Ulang Script[bold white]")
         else:exit()
