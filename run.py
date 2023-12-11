@@ -206,7 +206,8 @@ def waktucok():
         return timenow
 ###----------[ CEK LISENSI ]---------- ###
 def key():
-    logoku();key = Console().input(f" {K}#{P} masukan lisensi : {H}")
+    logoku()
+    key = Console().input(f" {K}#{P} masukan lisensi : {H}")
     try:
         ses = requests.Session()
         asu = ses.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s&Sign=True"%(key)).json()['licenseKey']['key']
@@ -218,14 +219,14 @@ def key():
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
         os.system("rm -rf key.txt")
         time.sleep(3)
-        license()
+        key()
 
 ###----------[ CEK LISENSI ]---------- ###
 def cek():
     try:
         x=open("key.txt","r").read()
     except FileNotFoundError:
-        license()
+        key()
     try:
         x = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s"%(x)).json()['licenseKey']['key']
         login()
@@ -233,7 +234,7 @@ def cek():
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
         os.system("rm -rf key.txt")
         
-        license()
+        key()
 
 ###----------[ MASUK LISENSI ]---------- ###
 def key():
@@ -249,13 +250,13 @@ def key():
     except KeyError:
         Console().print(Panel(f"{P2} lisensi yang anda masukan tidak terdaftar silahkan beli terlebih dahulu",width=80,padding=(0,1),style=f"{color_table}"))
         time.sleep(3)
-        license()
+        key()
 ###----------[ CEK LISENSI ]---------- ###				
 def cek():
     try:
         x=open("key.txt","r").read()
     except FileNotFoundError:
-        license()
+        key()
     try:
         x = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s"%(x)).json()['licenseKey']['key']
         login()
@@ -263,7 +264,7 @@ def cek():
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
         os.system("rm -rf key.txt")
         time.sleep(3)
-        license()
+        key()
 
 ###----------[ BUY LISENSI ]---------- ###	
 def beli_bang():
@@ -298,7 +299,7 @@ def cek_lisensi_aktif():
     try:
         xz = open("key.txt","r").read()
     except FileNotFoundError:
-        license()
+        key()
         os.system("clear")
         cek()
  
@@ -419,7 +420,7 @@ def menu(my_name,my_id):
         sen = open("key.txt","r").read()
         prem = f"{H2}Iya"
     except (KeyError,FileNotFoundError):
-        prem = f"{K2}Iya"
+        prem = f"{H2}Iya"
 
     try:
         token = open('.token.txt','r').read()
