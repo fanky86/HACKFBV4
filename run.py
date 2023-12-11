@@ -204,36 +204,7 @@ def waktucok():
         elif 15 <= hours < 18:timenow = "Selamat Sore"
         else:timenow = "Selamat Malam"
         return timenow
-###----------[ CEK LISENSI ]---------- ###
-def key():
-    key = Console().input(f" {K}#{P} masukan lisensi : {H}")
-    try:
-        ses = requests.Session()
-        asu = ses.get("https://app.cryptolens.io/api/key/Activate?token=WyI2OTI5MDg3MyIsInd1YWVBczEzbWNTc0FZVmt3YzdHUGJJano2VDFITzFMWXBUUHBKWFIiXQ==&ProductId=23002&Key=%s&Sign=True"%(key)).json()['licenseKey']['key']
-        open("key.txt","w").write(key)
-        Console().print(Panel(f"{P2}selamat lisensi yang anda masukan terdaftar ke server ",width=80,padding=(0,6),style=f"{color_table}"))
-        time.sleep(4)
-        login()
-    except KeyError:
-        Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
-        os.system("rm -rf key.txt")
-        time.sleep(3)
-        licen()
 
-###----------[ CEK LISENSI ]---------- ###
-def cek():
-    try:
-        x=open("key.txt","r").read()
-    except FileNotFoundError:
-        licen()
-    try:
-        x = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2OTI5MDg3MyIsInd1YWVBczEzbWNTc0FZVmt3YzdHUGJJano2VDFITzFMWXBUUHBKWFIiXQ==&ProductId=23002&Key=%s"%(x)).json()['licenseKey']['key']
-        login()
-    except KeyError:
-        Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
-        os.system("rm -rf key.txt")
-        
-        licen()
 
 ###----------[ MASUK LISENSI ]---------- ###
 def key():
@@ -250,7 +221,7 @@ def key():
         Console().print(Panel(f"{P2} lisensi yang anda masukan tidak terdaftar silahkan beli terlebih dahulu",width=80,padding=(0,1),style=f"{color_table}"))
         time.sleep(3)
         licen()
-###----------[ CEK LISENSI ]---------- ###				
+###----------[ CEK LISENSI ]---------- ###				xx
 def cek():
     try:
         x=open("key.txt","r").read()
