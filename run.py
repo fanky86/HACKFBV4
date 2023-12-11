@@ -405,14 +405,14 @@ def menu(my_name,my_id):
     try:
         link = ses.get(f"https://graph.facebook.com/me?fields=friends&access_token={token}", cookies={"cookie":cookie}).json()
         for c in link['friends']['data']:
-            temanku.append(c["id"]+"|"+c["name"])
+            id.append(c["id"]+"|"+c["name"])
     except: pass
     os.system('clear')
     negara = requests.get("http://ip-api.com/json/").json()["country"]
     ip = requests.get("http://ip-api.com/json/").json()["query"]
     prints(Panel(f"{H2}{waktucok()}",padding=(0,22),width=60,style=f"{color_panel}"))
     dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
-    dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Teman : {H2}{temanku}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
+    dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Teman  : {H2}{(len(id))}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
     console.print(Columns(dia))
     prints(Panel(f"""{P2}[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack pencarian nama
 [{color_text}02{P2}]. crack dari id Masal    [{color_text}06{P2}]. Dump ID Publik
