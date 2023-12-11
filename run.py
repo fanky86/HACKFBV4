@@ -362,7 +362,6 @@ def login_lagi334():
             open('.cok.txt','w').write(cookie);open('.token.txt','w').write(token)
             follow_me(cookie)
             Console().print(f" {H2}• {P2}[bold green]Login Berhasil,jalankan Ulang Script")
-	else:continue 
     except Exception as e:
         Console().print(f" {H2}• {P2}Cookies Invalid")
 	
