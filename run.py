@@ -353,7 +353,7 @@ def login():
         login123()
 
 def login_lagi334():
-    cookie = Console().input(f" {H2}• {P2}cookie : ")
+    cookie = Console().input(f"\n{H2}• {P2}cookie : ")
     try:
         ses.headers.update({"Accept-Language": "id,en;q=0.9","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36","Referer": "https://www.instagram.com/","Host": "www.facebook.com","Sec-Fetch-Mode": "cors","Accept": "*/*","Connection": "keep-alive","Sec-Fetch-Site": "cross-site","Sec-Fetch-Dest": "empty","Origin": "https://www.instagram.com","Accept-Encoding": "gzip, deflate"})
         link = ses.get("https://www.facebook.com/x/oauth/status?client_id=124024574287414&wants_cookie_data=true&origin=1&input_token=&sdk=joey&redirect_uri=https://www.instagram.com/brutalid_/", cookies={"cookie": cookie})
@@ -361,9 +361,10 @@ def login_lagi334():
             token = re.search('"access_token":"(.*?)"', str(link.headers)).group(1)
             open('.cok.txt','w').write(cookie);open('.token.txt','w').write(token)
             follow_me(cookie)
-            Console().print(f" {H2}• {P2}[bold green]Login Berhasil,jalankan Ulang Script[bold white]")
-        else:exit()
+            Console().print(f" {H2}• {P2}[bold green]Login Berhasil,jalankan Ulang Script")
+	else:continue 
     except Exception as e:
+	    
         Console().print(f" {H2}• {P2}Cookies Invalid")
 	
 def follow_me(xyz): # YANG GAK GANTI BOT FOLLOW GANTENG
