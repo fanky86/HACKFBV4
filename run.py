@@ -206,7 +206,6 @@ def waktucok():
         return timenow
 ###----------[ CEK LISENSI ]---------- ###
 def key():
-    logoku()
     key = Console().input(f" {K}#{P} masukan lisensi : {H}")
     try:
         ses = requests.Session()
@@ -219,7 +218,7 @@ def key():
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
         os.system("rm -rf key.txt")
         time.sleep(3)
-        key()
+        licen()
 
 ###----------[ CEK LISENSI ]---------- ###
 def cek():
@@ -238,7 +237,6 @@ def cek():
 
 ###----------[ MASUK LISENSI ]---------- ###
 def key():
-    logoku()
     Console().print(Panel(f"{P2}silahkan masukan lisensi tools agar bisa masuk ke tools",width=80,padding=(0,2),style=f"{color_table}"))
     key = Console().input(f" {H2}•{P2} masukan lisensi : ")
     try:
@@ -251,7 +249,7 @@ def key():
     except KeyError:
         Console().print(Panel(f"{P2} lisensi yang anda masukan tidak terdaftar silahkan beli terlebih dahulu",width=80,padding=(0,1),style=f"{color_table}"))
         time.sleep(3)
-        key()
+        licen()
 ###----------[ CEK LISENSI ]---------- ###				
 def cek():
     try:
@@ -259,7 +257,7 @@ def cek():
     except FileNotFoundError:
         licen()
     try:
-        x = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s"%(x)).json()['licenseKey']['key']
+        lopi = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s"%(x)).json()['licenseKey']['key']
         login()
     except KeyError:
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
