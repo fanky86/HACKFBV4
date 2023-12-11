@@ -38,31 +38,31 @@ class main:
 	def login_cookie(self):
 		self.loogo()
 		cookie = input(f'\n[{O}?{N}] Cookies : ')
-#		try:
-		ses.headers.update({"Accept-Language": "id,en;q=0.9","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36","Referer": "https://www.instagram.com/","Host": "www.facebook.com","Sec-Fetch-Mode": "cors","Accept": "*/*","Connection": "keep-alive","Sec-Fetch-Site": "cross-site","Sec-Fetch-Dest": "empty","Origin": "https://www.instagram.com","Accept-Encoding": "gzip, deflate"})
-		link = ses.get("https://www.facebook.com/x/oauth/status?client_id=124024574287414&wants_cookie_data=true&origin=1&input_token=&sdk=joey&redirect_uri=https://www.instagram.com/brutalid_/", cookies={"cookie": cookie})
-		if '"access_token":' in str(link.headers):
-			token = re.search('"access_token":"(.*?)"', str(link.headers)).group(1)
-			open('cookie.txt','w').write(cookie);open('token.txt','w').write(token)
-			exit(f'\n[{H}+{N}] Login menggunakan cookie berhasil')
-#		else:exit()
-#		except Exception as e:
-#			exit(f'\n[{M}!{N}] Login menggunakan cookie gagal!')
+		try:
+			ses.headers.update({"Accept-Language": "id,en;q=0.9","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36","Referer": "https://www.instagram.com/","Host": "www.facebook.com","Sec-Fetch-Mode": "cors","Accept": "*/*","Connection": "keep-alive","Sec-Fetch-Site": "cross-site","Sec-Fetch-Dest": "empty","Origin": "https://www.instagram.com","Accept-Encoding": "gzip, deflate"})
+			link = ses.get("https://www.facebook.com/x/oauth/status?client_id=124024574287414&wants_cookie_data=true&origin=1&input_token=&sdk=joey&redirect_uri=https://www.instagram.com/brutalid_/", cookies={"cookie": cookie})
+			if '"access_token":' in str(link.headers):
+				token = re.search('"access_token":"(.*?)"', str(link.headers)).group(1)
+				open('cookie.txt','w').write(cookie);open('token.txt','w').write(token)
+				exit(f'\n[{H}+{N}] Login menggunakan cookie berhasil')
+			else:exit()
+		except Exception as e:
+			exit(f'\n[{M}!{N}] Login menggunakan cookie gagal!')
 	
 	# MENU DUMP-
 	def menu(self):
 		try:self.cookie = open('cookie.txt','r').read();self.token = open('token.txt','r').read()
 		except:self.login_cookie()
 		self.loogo()
-#		try:
-#			link = ses.get(f"https://graph.facebook.com/v18.0/me?fields=id,name&access_token={self.token}", cookies={"cookie": self.cookie}).json()
-#			uid, name = link["id"], link["name"]
-#		except:
-#			os.system('rm -f cookie.txt')
-#			exit(f'\n[{M}!{N}] Cookie akun tumbal kamu kadaluarsa')
+		try:
+			link = ses.get(f"https://graph.facebook.com/v18.0/me?fields=id,name&access_token={self.token}", cookies={"cookie": self.cookie}).json()
+			uid, name = link["id"], link["name"]
+		except:
+			os.system('rm -f cookie.txt')
+			exit(f'\n[{M}!{N}] Cookie akun tumbal kamu kadaluarsa')
 		print(f'''
-[{O}*{N}] Name : {N}
-[{O}*{N}] Uid  : {N}
+[{O}*{N}] Name : {name}{N}
+[{O}*{N}] Uid  : {uid}{N}
 
 	[{H}1{N}] Dump dari teman publik
 	[{H}2{N}] Dump dari teman massal
