@@ -323,7 +323,7 @@ def licen():
 def login123():
     os.system('clear')
     banner()
-    print(Panel(f"""{P2}[{color_text}01{P2}].Login Menggunakan Cookie
+    console().print(Panel(f"""{P2}[{color_text}01{P2}].Login Menggunakan Cookie
     [{color_text}02{M2}].Keluar""",width=60, style=f"{color_panel}", title="[bold green]Login"))
     bryn = console.input(f" {H2}• {P2}pilih menu : ")
     if bryn in ['1','01']:
