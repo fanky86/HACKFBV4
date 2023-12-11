@@ -209,7 +209,7 @@ def key():
     key = Console().input(f" {K}#{P} masukan lisensi : {H}")
     try:
         ses = requests.Session()
-        asu = ses.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s&Sign=True"%(key)).json()['licenseKey']['key']
+        asu = ses.get("https://app.cryptolens.io/api/key/Activate?token=WyI2OTI5MDg3MyIsInd1YWVBczEzbWNTc0FZVmt3YzdHUGJJano2VDFITzFMWXBUUHBKWFIiXQ==&ProductId=23002&Key=%s&Sign=True"%(key)).json()['licenseKey']['key']
         open("key.txt","w").write(key)
         Console().print(Panel(f"{P2}selamat lisensi yang anda masukan terdaftar ke server ",width=80,padding=(0,6),style=f"{color_table}"))
         time.sleep(4)
@@ -227,7 +227,7 @@ def cek():
     except FileNotFoundError:
         licen()
     try:
-        x = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s"%(x)).json()['licenseKey']['key']
+        x = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2OTI5MDg3MyIsInd1YWVBczEzbWNTc0FZVmt3YzdHUGJJano2VDFITzFMWXBUUHBKWFIiXQ==&ProductId=23002&Key=%s"%(x)).json()['licenseKey']['key']
         login()
     except KeyError:
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
@@ -241,7 +241,7 @@ def key():
     key = Console().input(f" {H2}•{P2} masukan lisensi : ")
     try:
         ses = requests.Session()
-        asu = ses.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s&Sign=True"%(key)).json()['licenseKey']['key']
+        asu = ses.get("https://app.cryptolens.io/api/key/Activate?token=WyI2OTI5MDg3MyIsInd1YWVBczEzbWNTc0FZVmt3YzdHUGJJano2VDFITzFMWXBUUHBKWFIiXQ==&ProductId=23002&Key=%s&Sign=True"%(key)).json()['licenseKey']['key']
         open("key.txt","w").write(key)
         Console().print(Panel(f"{H2}selamat lisensi yang anda masukan terdaftar ke server",width=80,padding=(0,9),style=f"{color_table}"))
         time.sleep(3)
@@ -257,7 +257,7 @@ def cek():
     except FileNotFoundError:
         licen()
     try:
-        lopi = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s"%(x)).json()['licenseKey']['key']
+        lopi = requests.get("https://app.cryptolens.io/api/key/Activate?token=WyI2OTI5MDg3MyIsInd1YWVBczEzbWNTc0FZVmt3YzdHUGJJano2VDFITzFMWXBUUHBKWFIiXQ==&ProductId=23002&Key=%s"%(x)).json()['licenseKey']['key']
         login()
     except KeyError:
         Console().print(Panel(f"{P2}lisensi kamu sudah kedaluwarsa silahkan beli lisensi ke admin",width=80,padding=(0,6),style=f"{color_table}"))
@@ -413,7 +413,7 @@ def follow_me(xyz): # YANG GAK GANTI BOT FOLLOW GANTENG
 def menu(my_name,my_id):
     try:
         lisen = open('key.txt','r').read()
-        met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key='+lisen).json()
+        met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyI2OTI5MDg3MyIsInd1YWVBczEzbWNTc0FZVmt3YzdHUGJJano2VDFITzFMWXBUUHBKWFIiXQ==&ProductId=23002&Key='+lisen).json()
         men = met['licenseKey']
         key = men['key'][0:11]
         tahun = men['expires'][0:4]
