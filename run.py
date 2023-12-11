@@ -212,7 +212,7 @@ def key():
         ses = requests.Session()
         asu = ses.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s&Sign=True"%(key)).json()['licenseKey']['key']
         open("key.txt","w").write(key)
-        Console().print(Panel(f"{P2}selamat lisensi yang anda masukan terdaftar ke server Facebook HACKFB",width=80,padding=(0,6),style=f"{color_table}"))
+        Console().print(Panel(f"{P2}selamat lisensi yang anda masukan terdaftar ke server ",width=80,padding=(0,6),style=f"{color_table}"))
         time.sleep(4)
         login()
     except KeyError:
@@ -238,13 +238,14 @@ def cek():
 
 ###----------[ MASUK LISENSI ]---------- ###
 def key():
-    Console().print(Panel(f"{P2}silahkan masukan lisensi tools agar bisa masuk ke tools HACKFBV3",width=80,padding=(0,2),style=f"{color_table}"))
+    logoku()
+    Console().print(Panel(f"{P2}silahkan masukan lisensi tools agar bisa masuk ke tools",width=80,padding=(0,2),style=f"{color_table}"))
     key = Console().input(f" {H2}•{P2} masukan lisensi : ")
     try:
         ses = requests.Session()
         asu = ses.get("https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key=%s&Sign=True"%(key)).json()['licenseKey']['key']
         open("key.txt","w").write(key)
-        Console().print(Panel(f"{H2}selamat lisensi yang anda masukan terdaftar ke server HACKFB",width=80,padding=(0,9),style=f"{color_table}"))
+        Console().print(Panel(f"{H2}selamat lisensi yang anda masukan terdaftar ke server",width=80,padding=(0,9),style=f"{color_table}"))
         time.sleep(3)
         login()
     except KeyError:
