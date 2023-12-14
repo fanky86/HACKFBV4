@@ -333,7 +333,7 @@ def login123():
     Console().print(Panel(f"""{P2}[{color_text}01{P2}].Login Menggunakan Cookie\n[{color_text}02{P2}].{M2}Keluar""",width=60, style=f"{color_panel}", title="[bold green]Login"))
     bryn = console.input(f" {H2}• {P2}pilih menu : ")
     if bryn in ['1','01']:
-        login_lagi334()
+        logincoki()
     elif bryn in ['2','02']:
         exit()
     else:
@@ -359,25 +359,7 @@ def login():
     except IOError:
         login123()
 
-def login_lagi334():
-    cookiee = Console().input(f' {H2}• {P2}cookie : ')
-    xyz = requests.Session()
-    try:
-        cookie = {'cookie':cookiee}
-        url = 'https://www.facebook.com/adsmanager/manage/campaigns'
-        req = xyz.get(url,cookies=cookie)
-        set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
-        nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
-        roq = xyz.get(nek,cookies=cookie)
-        tok1 = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
-        open('.cok.txt','w').write(cookie);open('.token.txt','w').write(tok1)
-        follow_me(cookie)
-        Console().print(Panel(f"""{P2}{tok1}""",width=60, style=f"{color_panel}", title="[bold green]TOKEN"))
-        Console().print(f' {H2}• {P2}[bold green]Login Berhasil,jalankan Ulang Script')
-    except Exception as e:
-        Console().print(f' {H2}• {P2}Cookies Invalid')
-
-def login_lagi33445():
+def logincoki():
     cookie = Console().input(f' {H2}• {P2}cookie : ')
     try:
         ses.headers.update({"Accept-Language": "id,en;q=0.9","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36","Referer": "https://www.instagram.com/","Host": "www.facebook.com","Sec-Fetch-Mode": "cors","Accept": "*/*","Connection": "keep-alive","Sec-Fetch-Site": "cross-site","Sec-Fetch-Dest": "empty","Origin": "https://www.instagram.com","Accept-Encoding": "gzip, deflate"})
@@ -447,8 +429,8 @@ def menu(my_name,my_id):
     negara = requests.get("http://ip-api.com/json/").json()["country"]
     ip = requests.get("http://ip-api.com/json/").json()["query"]
     prints(Panel(f"{P2}{negara}",padding=(0,22),width=60,style=f"{color_panel}"))
-    dia.append(Panel(f'{P2}lisensi : {H2}{key}-****-****\n{P2}join    : {H2}{tanggal1} {bulan1} {tahun1}\n{P2}expired : {H2}{tanggal} {bulan} {tahun}\n{P2}premium : {prem}',width=30,title=f"{P2}Lisensi",style=f"{color_panel}"))
-    #dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
+    #dia.append(Panel(f'{P2}lisensi : {H2}{key}-****-****\n{P2}join    : {H2}{tanggal1} {bulan1} {tahun1}\n{P2}expired : {H2}{tanggal} {bulan} {tahun}\n{P2}premium : {prem}',width=30,title=f"{P2}Lisensi",style=f"{color_panel}"))
+    dia.append(Panel(f'{P2}IP      : {H2}{ip}\n{P2}premium : {H2}Premium\n{P2}Negara  : {H2}{negara}',width=30,style=f"{color_panel}"))
     dia.append(panel(f'{P2}Name   : {H2}{my_name}\n{P2}Idz    : {H2}{my_id}\n{P2}Teman  : {H2}{(len(temanku))}\n{P2}Waktu  : {H2}{waktucok()}',title=f"{P2}Bio Data",width=30,style=f"{color_panel}"))
     console.print(Columns(dia))
     prints(Panel(f"""{P2}[{color_text}01{P2}]. crack dari id publik   [{color_text}05{P2}]. crack pencarian nama
