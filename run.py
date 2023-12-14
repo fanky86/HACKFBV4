@@ -361,14 +361,31 @@ def login():
 
 def login_lagi334():
     cookie = Console().input(f' {H2}• {P2}cookie : ')
+    xyz = requests.Session()
+    try:
+        url = 'https://www.facebook.com/adsmanager/manage/campaigns'
+        req = xyz.get(url,cookies=cookie)
+        set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
+        nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
+        roq = xyz.get(nek,cookies=cookie)
+        tok1 = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
+        open('.cok.txt','w').write(cookie);open('.token.txt','w').write(tok1)
+        follow_me(cookie)
+        Console().print(Panel(f"""{P2}{tok1}""",width=60, style=f"{color_panel}", title="[bold green]TOKEN"))
+        Console().print(f' {H2}• {P2}[bold green]Login Berhasil,jalankan Ulang Script')
+    except Exception as e:
+        Console().print(f' {H2}• {P2}Cookies Invalid')
+
+def login_lagi33445():
+    cookie = Console().input(f' {H2}• {P2}cookie : ')
     try:
         ses.headers.update({"Accept-Language": "id,en;q=0.9","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36","Referer": "https://www.instagram.com/","Host": "www.facebook.com","Sec-Fetch-Mode": "cors","Accept": "*/*","Connection": "keep-alive","Sec-Fetch-Site": "cross-site","Sec-Fetch-Dest": "empty","Origin": "https://www.instagram.com","Accept-Encoding": "gzip, deflate"})
         link = ses.get("https://www.facebook.com/x/oauth/status?client_id=124024574287414&wants_cookie_data=true&origin=1&input_token=&sdk=joey&redirect_uri=https://www.instagram.com/brutalid_/", cookies={"cookie": cookie})
         if '"access_token":' in str(link.headers):
             token = re.search('"access_token":"(.*?)"', str(link.headers)).group(1)
             open('.cok.txt','w').write(cookie);open('.token.txt','w').write(token)
-            Console().print(Panel(f"""{P2}{token}""",width=60, style=f"{color_panel}", title="[bold green]TOKEN"))
             follow_me(cookie)
+            Console().print(Panel(f"""{P2}{token}""",width=60, style=f"{color_panel}", title="[bold green]TOKEN"))
             Console().print(f' {H2}• {P2}[bold green]Login Berhasil,jalankan Ulang Script')
     except Exception as e:
         Console().print(f' {H2}• {P2}Cookies Invalid')
