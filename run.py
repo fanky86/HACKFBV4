@@ -360,9 +360,10 @@ def login():
         login123()
 
 def login_lagi334():
-    cookie = Console().input(f' {H2}• {P2}cookie : ')
+    cookiee = Console().input(f' {H2}• {P2}cookie : ')
     xyz = requests.Session()
     try:
+        cookie = {'cookie':cookiee}
         url = 'https://www.facebook.com/adsmanager/manage/campaigns'
         req = xyz.get(url,cookies=cookie)
         set = re.search('act=(.*?)&nav_source',str(req.content)).group(1)
